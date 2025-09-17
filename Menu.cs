@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace projeto_1
 {
-    public partial class Frmmenu : Form
+    public partial class Menu : Form
     {
         Thread ntclick;
-        public Frmmenu()
+        public Menu()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace projeto_1
 {
-    partial class Frmmenu
+    partial class Menu
     {
         /// <summary>
         /// Required designer variable.

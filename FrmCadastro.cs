@@ -42,7 +42,7 @@ namespace projeto_1
 
         private void novoFrmmenu()
         {
-            Application.Run(new Frmmenu());
+            Application.Run(new Menu());
         }
 
         private void label1_Click(object sender, EventArgs e)

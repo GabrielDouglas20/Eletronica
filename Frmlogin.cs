@@ -29,7 +29,7 @@ namespace projeto_1
 
         private void novoFrmmenu()
         {
-            Application.Run(new Frmmenu());
+            Application.Run(new Menu());
         }
     }
 }

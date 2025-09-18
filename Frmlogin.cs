@@ -21,10 +21,29 @@ namespace projeto_1
 
         private void btnentrar_Click(object sender, EventArgs e)
         {
-            this.Close();
-            ntcli = new Thread(novoFrmmenu);
-            ntcli.SetApartmentState(ApartmentState.STA);
-            ntcli.Start();
+            string cpf = txtcpf.Text;
+            string senha = txtsenha.Text;
+            if (string.IsNullOrWhiteSpace(cpf)  || string.IsNullOrWhiteSpace(senha))
+
+            {
+                MessageBox.Show("Preencha os campos por favor.", "Campos vazios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            CadastroUsuarios db = new CadastroUsuarios();
+
+            if (db.loginUsuario(cpf, senha))
+            {
+                MessageBox.Show("Login realizado com sucesso", "Bem vindo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Menu menu = new Menu();
+
+                menu.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("cpf e senha incorretos. tente novamente!", " Falha no login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void novoFrmmenu()

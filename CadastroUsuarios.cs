@@ -15,7 +15,7 @@ namespace projeto_1
 
 
 
-        public bool AdicionarUsuario(int id,string cpf, string nome, string email, string telefone, string endereco, string cargo, string senha)
+        public bool AdicionarUsuario(int id, string cpf, string nome, string email, string telefone, string endereco, string cargo, string senha)
         {
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
             {
@@ -175,6 +175,34 @@ namespace projeto_1
                 }
             }
 
+        }
+
+        public bool loginUsuario(string cpf, string senha)
+        {
+            using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
+            {
+                try
+                {
+                    conexao.Open();
+
+                    string comandoSql = "SELECT COUNT(*) FROM cadastro WHERE cpf = @cpf AND senha = @senha";
+
+                    using (MySqlCommand comando = new MySqlCommand(comandoSql, conexao))
+                    {
+                        comando.Parameters.AddWithValue("@cpf", cpf);
+                        comando.Parameters.AddWithValue("@senha", senha);
+
+                        int count = Convert.ToInt32(comando.ExecuteScalar());
+
+                        return count > 0; // true = login válido
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao efetuar login: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
         }
     }
 }

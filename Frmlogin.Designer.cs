@@ -33,6 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtsenha = new System.Windows.Forms.TextBox();
             this.txtcpf = new System.Windows.Forms.MaskedTextBox();
+            this.BtnCadastrar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnentrar
@@ -79,14 +81,35 @@
             this.txtcpf.Size = new System.Drawing.Size(78, 20);
             this.txtcpf.TabIndex = 4;
             // 
+            // BtnCadastrar
+            // 
+            this.BtnCadastrar.Location = new System.Drawing.Point(53, 246);
+            this.BtnCadastrar.Name = "BtnCadastrar";
+            this.BtnCadastrar.Size = new System.Drawing.Size(75, 25);
+            this.BtnCadastrar.TabIndex = 5;
+            this.BtnCadastrar.Text = "CADASTRAR";
+            this.BtnCadastrar.UseVisualStyleBackColor = true;
+            this.BtnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(74, 225);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "OU";
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(181, 266);
+            this.ClientSize = new System.Drawing.Size(181, 283);
+            this.Controls.Add(this.BtnCadastrar);
             this.Controls.Add(this.txtcpf);
             this.Controls.Add(this.txtsenha);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnentrar);
@@ -107,5 +130,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtsenha;
         private System.Windows.Forms.MaskedTextBox txtcpf;
+        private System.Windows.Forms.Button BtnCadastrar;
+        private System.Windows.Forms.Label label3;
     }
 }

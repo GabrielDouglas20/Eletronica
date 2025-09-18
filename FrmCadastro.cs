@@ -13,7 +13,7 @@ namespace projeto_1
 {
     public partial class FrmCadastro : Form
     {
-        Thread nt;
+        Thread nt, ntLogin;
         int id = 0;
         public FrmCadastro()
         {
@@ -224,7 +224,18 @@ namespace projeto_1
 
         }
 
-       
+        private void BtnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ntLogin = new Thread(FrmSair);
+            ntLogin.SetApartmentState(ApartmentState.STA);
+            ntLogin.Start();
+        }
+
+        private void FrmSair()
+        {
+            Application.Run(new FrmLogin());
+        }
     }
 }
 

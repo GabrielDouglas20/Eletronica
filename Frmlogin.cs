@@ -13,7 +13,7 @@ namespace projeto_1
 {
     public partial class FrmLogin : Form
     {
-        Thread ntcli;
+        Thread ntcli, ntCadastrar;
         public FrmLogin()
         {
             InitializeComponent();
@@ -49,6 +49,19 @@ namespace projeto_1
         private void novoFrmmenu()
         {
             Application.Run(new Menu());
+        }
+
+        private void BtnCadastrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ntCadastrar = new Thread(FrmParaCadastrar);
+            ntCadastrar.SetApartmentState(ApartmentState.STA);
+            ntCadastrar.Start();
+        }
+
+        private void FrmParaCadastrar()
+        {
+            Application.Run(new FrmCadastro());
         }
     }
 }

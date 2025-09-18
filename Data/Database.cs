@@ -10,7 +10,7 @@ namespace projeto_1.Data
     internal class Database
 
     {
-        private static string connectionString = "server=localhost;database=eletronica;uid=root;pwd=;";
+        private static string connectionString = "server=localhost;database=eletronica;uid=root;pwd=123456;";
 
         public static MySqlConnection GetConnection()
         {

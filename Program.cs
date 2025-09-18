@@ -16,7 +16,7 @@ namespace projeto_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCadastro());
+            Application.Run(new FrmPecas());
         }
     }
 }

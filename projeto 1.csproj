@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CadastroUsuarios.cs" />
+    <Compile Include="Data\Database.cs" />
     <Compile Include="FrmCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +111,24 @@
     </Compile>
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMovimentacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMovimentacao.Designer.cs">
+      <DependentUpon>FrmMovimentacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNotificacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNotificacoes.Designer.cs">
+      <DependentUpon>FrmNotificacoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPecas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPecas.Designer.cs">
+      <DependentUpon>FrmPecas.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -124,6 +143,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMovimentacao.resx">
+      <DependentUpon>FrmMovimentacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNotificacoes.resx">
+      <DependentUpon>FrmNotificacoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPecas.resx">
+      <DependentUpon>FrmPecas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>

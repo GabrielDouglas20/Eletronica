@@ -32,7 +32,5 @@ namespace projeto_1
         {
             Application.Run(new FrmLogin());
         }
-
-       
     }
 }

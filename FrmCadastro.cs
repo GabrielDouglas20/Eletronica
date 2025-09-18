@@ -232,6 +232,11 @@ namespace projeto_1
             ntLogin.Start();
         }
 
+        private void Desligar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void FrmSair()
         {
             Application.Run(new FrmLogin());

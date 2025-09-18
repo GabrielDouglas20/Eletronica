@@ -152,5 +152,10 @@ namespace projeto_1
             cmbEstado.SelectedIndex = -1;
             numQuantidademin.Value = 0;
         }
+
+        private void Desligar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

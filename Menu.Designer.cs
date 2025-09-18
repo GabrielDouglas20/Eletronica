@@ -30,11 +30,11 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Desligar = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.Desligar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBemVindo = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
@@ -62,6 +62,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(144, 580);
             this.panel2.TabIndex = 1;
+            // 
+            // Desligar
+            // 
+            this.Desligar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Desligar.FlatAppearance.BorderSize = 0;
+            this.Desligar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.Desligar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Desligar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Desligar.Image = global::projeto_1.Properties.Resources.off1;
+            this.Desligar.Location = new System.Drawing.Point(3, 523);
+            this.Desligar.Name = "Desligar";
+            this.Desligar.Size = new System.Drawing.Size(137, 54);
+            this.Desligar.TabIndex = 0;
+            this.Desligar.UseVisualStyleBackColor = true;
+            this.Desligar.Click += new System.EventHandler(this.Desligar_Click);
             // 
             // button4
             // 
@@ -119,19 +134,6 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Desligar
-            // 
-            this.Desligar.FlatAppearance.BorderSize = 0;
-            this.Desligar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.Desligar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Desligar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Desligar.Image = global::projeto_1.Properties.Resources.off1;
-            this.Desligar.Location = new System.Drawing.Point(3, 523);
-            this.Desligar.Name = "Desligar";
-            this.Desligar.Size = new System.Drawing.Size(137, 54);
-            this.Desligar.TabIndex = 0;
-            this.Desligar.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -148,12 +150,12 @@
             // 
             this.lblBemVindo.AutoSize = true;
             this.lblBemVindo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblBemVindo.Font = new System.Drawing.Font("Mistral", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBemVindo.Location = new System.Drawing.Point(0, 33);
+            this.lblBemVindo.Font = new System.Drawing.Font("Modern No. 20", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBemVindo.Location = new System.Drawing.Point(2, 15);
             this.lblBemVindo.Name = "lblBemVindo";
-            this.lblBemVindo.Size = new System.Drawing.Size(137, 34);
+            this.lblBemVindo.Size = new System.Drawing.Size(275, 31);
             this.lblBemVindo.TabIndex = 2;
-            this.lblBemVindo.Text = "Bem-vindo, ";
+            this.lblBemVindo.Text = "Bem-vindo, Usuário.";
             this.lblBemVindo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Menu

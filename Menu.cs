@@ -33,6 +33,9 @@ namespace projeto_1
             Application.Run(new FrmLogin());
         }
 
-        
+        private void Desligar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

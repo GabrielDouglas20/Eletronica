@@ -37,6 +37,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBemVindo = new System.Windows.Forms.Label();
+            this.btnNotificacoes = new System.Windows.Forms.Button();
+            this.rtbRelatorio = new System.Windows.Forms.RichTextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,10 +140,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Font = new System.Drawing.Font("Mistral", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(465, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(271, 34);
+            this.label1.Size = new System.Drawing.Size(403, 33);
             this.label1.TabIndex = 2;
             this.label1.Text = "SISTEMA DE ELETRONICA";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -150,25 +152,48 @@
             // 
             this.lblBemVindo.AutoSize = true;
             this.lblBemVindo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblBemVindo.Font = new System.Drawing.Font("Modern No. 20", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBemVindo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBemVindo.Location = new System.Drawing.Point(2, 15);
             this.lblBemVindo.Name = "lblBemVindo";
-            this.lblBemVindo.Size = new System.Drawing.Size(275, 31);
+            this.lblBemVindo.Size = new System.Drawing.Size(299, 33);
             this.lblBemVindo.TabIndex = 2;
             this.lblBemVindo.Text = "Bem-vindo, Usuário.";
             this.lblBemVindo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnNotificacoes
+            // 
+            this.btnNotificacoes.Location = new System.Drawing.Point(325, 203);
+            this.btnNotificacoes.Name = "btnNotificacoes";
+            this.btnNotificacoes.Size = new System.Drawing.Size(75, 23);
+            this.btnNotificacoes.TabIndex = 3;
+            this.btnNotificacoes.Text = "Notificações";
+            this.btnNotificacoes.UseVisualStyleBackColor = true;
+            this.btnNotificacoes.Click += new System.EventHandler(this.btnNotificacoes_Click);
+            // 
+            // rtbRelatorio
+            // 
+            this.rtbRelatorio.Location = new System.Drawing.Point(431, 124);
+            this.rtbRelatorio.Name = "rtbRelatorio";
+            this.rtbRelatorio.ReadOnly = true;
+            this.rtbRelatorio.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.rtbRelatorio.Size = new System.Drawing.Size(283, 138);
+            this.rtbRelatorio.TabIndex = 4;
+            this.rtbRelatorio.Text = "";
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 681);
+            this.Controls.Add(this.rtbRelatorio);
+            this.Controls.Add(this.btnNotificacoes);
             this.Controls.Add(this.lblBemVindo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Menu";
             this.Text = "Frmmenu";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -186,5 +211,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblBemVindo;
+        private System.Windows.Forms.Button btnNotificacoes;
+        private System.Windows.Forms.RichTextBox rtbRelatorio;
     }
 }

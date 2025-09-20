@@ -43,6 +43,7 @@
             this.BtnPesquisarUsuarioP.TabIndex = 0;
             this.BtnPesquisarUsuarioP.Text = "Pesquisar";
             this.BtnPesquisarUsuarioP.UseVisualStyleBackColor = true;
+            this.BtnPesquisarUsuarioP.Click += new System.EventHandler(this.BtnPesquisarUsuarioP_Click);
             // 
             // dataGridViewUsuP
             // 
@@ -51,6 +52,7 @@
             this.dataGridViewUsuP.Name = "dataGridViewUsuP";
             this.dataGridViewUsuP.Size = new System.Drawing.Size(606, 150);
             this.dataGridViewUsuP.TabIndex = 1;
+            this.dataGridViewUsuP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuP_CellContentClick);
             // 
             // MaskUsuarioP
             // 
@@ -58,6 +60,7 @@
             this.MaskUsuarioP.Name = "MaskUsuarioP";
             this.MaskUsuarioP.Size = new System.Drawing.Size(100, 20);
             this.MaskUsuarioP.TabIndex = 2;
+            this.MaskUsuarioP.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.MaskUsuarioP_MaskInputRejected);
             // 
             // label1
             // 

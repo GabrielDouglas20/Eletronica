@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CadastroUsuarios.cs" />
+    <Compile Include="ClassPesquisas.cs" />
     <Compile Include="Data\Database.cs" />
     <Compile Include="FrmCadastro.cs">
       <SubType>Form</SubType>

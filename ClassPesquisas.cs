@@ -24,7 +24,7 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "SELECT id,cpf, nome, email, telefone, endereco, cargo, data_admissao, data_nascimento, senha From  cadastro ORDER BY cpf ASC";
+                    string comandoSql = "SELECT id, cpf, nome, email, telefone, endereco, cargo, data_admissao, data_nascimento, senha From  cadastro ORDER BY cpf ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.Fill(dataTable);
@@ -42,7 +42,7 @@ namespace projeto_1
 
         }
         // --- MÉTODO PARA PESQUISAR CONTATOS POR UM CRITÉRIO (NOME OU CPF) ---
-        public DataTable PesquisarUsuario(string criterio)
+        public DataTable PesquisarUsuarioo(string criterio)
         {
             DataTable dataTable = new DataTable();
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
@@ -53,7 +53,8 @@ namespace projeto_1
                     string comandoSql = "SELECT id, cpf, nome, email, telefone, endereco, cargo, data_admissao, data_nascimento, senha FROM cadastro WHERE nome LIKE @criterio OR cpf LIKE @criterio ORDER BY nome ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
-
+                        adapter.SelectCommand.Parameters.AddWithValue("@criterio", "%" + criterio + "%");
+                        adapter.Fill(dataTable);
                     }
                 }
                 catch (Exception ex)

@@ -73,7 +73,19 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "SELECT id, tipo_peca, marca, estado, quantidade_min, modelo From  pecas ORDER BY tipo_peca ASC";
+                    string comandoSql = @"
+                SELECT 
+                    p.id,
+                    p.tipo_peca,
+                    p.marca,
+                    p.estado,
+                    p.quantidade_min,
+                    p.modelo,
+                    IFNULL(SUM(e.quantidade), 0) AS quantidade_estoque
+                FROM pecas p
+                LEFT JOIN estoque e ON e.id_peca = p.id
+                GROUP BY p.id, p.tipo_peca, p.marca, p.estado, p.quantidade_min, p.modelo
+                ORDER BY p.tipo_peca ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.Fill(dataTable);
@@ -84,7 +96,6 @@ namespace projeto_1
                     MessageBox.Show("Erro ao Listar peças:" + ex.Message, "Erro",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
             return dataTable;
         }
@@ -97,7 +108,22 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "SELECT id, tipo_peca, marca, estado, quantidade_min, modelo FROM pecas WHERE tipo_peca LIKE @criterio OR modelo LIKE @criterio ORDER BY tipo_peca ASC";
+
+                    string comandoSql = @"
+                SELECT 
+                    p.id,
+                    p.tipo_peca,
+                    p.marca,
+                    p.estado,
+                    p.quantidade_min,
+                    p.modelo,
+                    IFNULL(SUM(e.quantidade), 0) AS quantidade_estoque
+                FROM pecas p
+                LEFT JOIN estoque e ON e.id_peca = p.id
+                WHERE p.tipo_peca LIKE @criterio OR p.modelo LIKE @criterio
+                GROUP BY p.id, p.tipo_peca, p.marca, p.estado, p.quantidade_min, p.modelo
+                ORDER BY p.tipo_peca ASC";
+
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.SelectCommand.Parameters.AddWithValue("@criterio", "%" + criterio + "%");

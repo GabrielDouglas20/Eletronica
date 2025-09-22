@@ -32,7 +32,12 @@
             this.dataGridViewUsuP = new System.Windows.Forms.DataGridView();
             this.MaskUsuarioP = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.BtnPesquisarPecas = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.maskePecaP = new System.Windows.Forms.MaskedTextBox();
+            this.dataGridViewPecasP = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPecasP)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnPesquisarUsuarioP
@@ -71,11 +76,51 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "USUARIO";
             // 
+            // BtnPesquisarPecas
+            // 
+            this.BtnPesquisarPecas.Location = new System.Drawing.Point(12, 283);
+            this.BtnPesquisarPecas.Name = "BtnPesquisarPecas";
+            this.BtnPesquisarPecas.Size = new System.Drawing.Size(75, 23);
+            this.BtnPesquisarPecas.TabIndex = 4;
+            this.BtnPesquisarPecas.Text = "Pesquisa";
+            this.BtnPesquisarPecas.UseVisualStyleBackColor = true;
+            this.BtnPesquisarPecas.Click += new System.EventHandler(this.BtnPesquisarPecas_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 267);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "PEÇAS";
+            // 
+            // maskePecaP
+            // 
+            this.maskePecaP.Location = new System.Drawing.Point(93, 286);
+            this.maskePecaP.Name = "maskePecaP";
+            this.maskePecaP.Size = new System.Drawing.Size(100, 20);
+            this.maskePecaP.TabIndex = 6;
+            this.maskePecaP.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskePecaP_MaskInputRejected);
+            // 
+            // dataGridViewPecasP
+            // 
+            this.dataGridViewPecasP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPecasP.Location = new System.Drawing.Point(12, 322);
+            this.dataGridViewPecasP.Name = "dataGridViewPecasP";
+            this.dataGridViewPecasP.Size = new System.Drawing.Size(776, 138);
+            this.dataGridViewPecasP.TabIndex = 7;
+            this.dataGridViewPecasP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPecasP_CellContentClick);
+            // 
             // FrmPesquisas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.dataGridViewPecasP);
+            this.Controls.Add(this.maskePecaP);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.BtnPesquisarPecas);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MaskUsuarioP);
             this.Controls.Add(this.dataGridViewUsuP);
@@ -83,6 +128,7 @@
             this.Name = "FrmPesquisas";
             this.Text = "FrmPesquisas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPecasP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,5 +140,9 @@
         private System.Windows.Forms.DataGridView dataGridViewUsuP;
         private System.Windows.Forms.MaskedTextBox MaskUsuarioP;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BtnPesquisarPecas;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MaskedTextBox maskePecaP;
+        private System.Windows.Forms.DataGridView dataGridViewPecasP;
     }
 }

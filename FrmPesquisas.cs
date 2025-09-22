@@ -133,5 +133,84 @@ namespace projeto_1
         {
 
         }
+
+        private void dataGridViewPecasP_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void BtnPesquisarPecas_Click(object sender, EventArgs e)
+        {
+            string criterio = maskePecaP.Text;
+            ClassPesquisas db = new ClassPesquisas();
+
+            if (string.IsNullOrEmpty(criterio))
+            {
+                dataGridViewPecasP.DataSource = db.PesquisaPecas();
+            }
+            else
+            {
+                dataGridViewPecasP.DataSource = db.PesquisaPecass(criterio);
+            }
+
+            FormatarGridPecas();
+        }
+
+        private void maskePecaP_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+
+
+        private void CarregarPecasGrid()
+        {
+            ClassPesquisas db = new ClassPesquisas();
+            dataGridViewPecasP.DataSource = db.PesquisaPecas();
+            FormatarGridPecas();
+        }
+
+        private void FormatarGridPecas()
+        {
+            if (dataGridViewPecasP.ColumnCount > 0)
+            {
+                dataGridViewPecasP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewPecasP.Columns["id"].Visible = false;
+                dataGridViewPecasP.Columns["tipo_peca"].HeaderText = "Tipo da Peça";
+                dataGridViewPecasP.Columns["marca"].HeaderText = "Marca";
+                dataGridViewPecasP.Columns["estado"].HeaderText = "Estado";
+                dataGridViewPecasP.Columns["quantidade_min"].HeaderText = "Quantidade Mínima";
+                dataGridViewPecasP.Columns["modelo"].HeaderText = "Modelo";
+            }
+
+
+
+
+
+        }
+
+        private void maskePecaP_TextChanged(object sender, EventArgs e)
+        {
+            string criterio = maskePecaP.Text;
+            ClassPesquisas db = new ClassPesquisas();
+
+            if (string.IsNullOrEmpty(criterio))
+            {
+                dataGridViewPecasP.DataSource = db.PesquisaPecas();
+            }
+            else
+            {
+                dataGridViewPecasP.DataSource = db.PesquisaPecass(criterio);
+            }
+
+            FormatarGridPecas();
+        }
+
+
+        
+
+
+
+
     }
 }

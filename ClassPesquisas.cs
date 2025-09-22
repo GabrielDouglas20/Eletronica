@@ -73,7 +73,7 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, modelo From  peças ORDER BY tipo_peca ASC";
+                    string comandoSql = "SELECT id, tipo_peca, marca, estado, quantidade_min, modelo From  pecas ORDER BY tipo_peca ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.Fill(dataTable);
@@ -89,7 +89,7 @@ namespace projeto_1
             return dataTable;
         }
         // --- MÉTODO PARA PESQUISAR PEÇAS POR UM CRITÉRIO (TIPO OU MODELO) ---
-        public DataTable PesquisarPecas(string criterio)
+        public DataTable PesquisaPecass(string criterio)
         {
             DataTable dataTable = new DataTable();
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
@@ -97,10 +97,11 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, modelo FROM peças WHERE tipo_peca LIKE @criterio OR modelo LIKE @criterio ORDER BY tipo_peca ASC";
+                    string comandoSql = "SELECT id, tipo_peca, marca, estado, quantidade_min, modelo FROM pecas WHERE tipo_peca LIKE @criterio OR modelo LIKE @criterio ORDER BY tipo_peca ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
-
+                        adapter.SelectCommand.Parameters.AddWithValue("@criterio", "%" + criterio + "%");
+                        adapter.Fill(dataTable);
                     }
                 }
                 catch (Exception ex)

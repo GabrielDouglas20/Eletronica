@@ -237,6 +237,10 @@ namespace projeto_1
             this.Close();
         }
 
+        
+
+       
+
         private void FrmSair()
         {
             Application.Run(new FrmLogin());

@@ -31,20 +31,23 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Desligar = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnPesquisar = new System.Windows.Forms.Button();
+            this.BtnCadUsu = new System.Windows.Forms.Button();
+            this.BtnCadPeca = new System.Windows.Forms.Button();
+            this.BtnMovi = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBemVindo = new System.Windows.Forms.Label();
             this.btnNotificacoes = new System.Windows.Forms.Button();
             this.rtbRelatorio = new System.Windows.Forms.RichTextBox();
+            this.BtnSair = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.BtnSair);
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -56,10 +59,10 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.Controls.Add(this.Desligar);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.BtnPesquisar);
+            this.panel2.Controls.Add(this.BtnCadUsu);
+            this.panel2.Controls.Add(this.BtnCadPeca);
+            this.panel2.Controls.Add(this.BtnMovi);
             this.panel2.Location = new System.Drawing.Point(0, 99);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(144, 580);
@@ -80,61 +83,69 @@
             this.Desligar.UseVisualStyleBackColor = true;
             this.Desligar.Click += new System.EventHandler(this.Desligar_Click);
             // 
-            // button4
+            // BtnPesquisar
             // 
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(3, 183);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(137, 54);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "button1";
-            this.button4.UseVisualStyleBackColor = true;
+            this.BtnPesquisar.FlatAppearance.BorderSize = 0;
+            this.BtnPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.BtnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPesquisar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnPesquisar.Location = new System.Drawing.Point(3, 183);
+            this.BtnPesquisar.Name = "BtnPesquisar";
+            this.BtnPesquisar.Size = new System.Drawing.Size(137, 54);
+            this.BtnPesquisar.TabIndex = 0;
+            this.BtnPesquisar.Text = "Pesquisar / Filtrar";
+            this.BtnPesquisar.UseVisualStyleBackColor = true;
+            this.BtnPesquisar.Click += new System.EventHandler(this.BtnPesquisar_Click);
             // 
-            // button3
+            // BtnCadUsu
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(3, 123);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(137, 54);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "button1";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BtnCadUsu.FlatAppearance.BorderSize = 0;
+            this.BtnCadUsu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.BtnCadUsu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCadUsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCadUsu.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnCadUsu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCadUsu.Location = new System.Drawing.Point(3, 123);
+            this.BtnCadUsu.Name = "BtnCadUsu";
+            this.BtnCadUsu.Size = new System.Drawing.Size(137, 54);
+            this.BtnCadUsu.TabIndex = 0;
+            this.BtnCadUsu.Text = "Cadastro - Usuário / Cliente";
+            this.BtnCadUsu.UseVisualStyleBackColor = true;
+            this.BtnCadUsu.Click += new System.EventHandler(this.BtnCadUsu_Click);
             // 
-            // button2
+            // BtnCadPeca
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 63);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 54);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "button1";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnCadPeca.FlatAppearance.BorderSize = 0;
+            this.BtnCadPeca.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.BtnCadPeca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCadPeca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCadPeca.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnCadPeca.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCadPeca.Location = new System.Drawing.Point(3, 63);
+            this.BtnCadPeca.Name = "BtnCadPeca";
+            this.BtnCadPeca.Size = new System.Drawing.Size(137, 54);
+            this.BtnCadPeca.TabIndex = 0;
+            this.BtnCadPeca.Text = "Cadastro de Peças";
+            this.BtnCadPeca.UseVisualStyleBackColor = true;
+            this.BtnCadPeca.Click += new System.EventHandler(this.BtnCadPeca_Click);
             // 
-            // button1
+            // BtnMovi
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 54);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnMovi.FlatAppearance.BorderSize = 0;
+            this.BtnMovi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.BtnMovi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMovi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnMovi.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnMovi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnMovi.Location = new System.Drawing.Point(3, 3);
+            this.BtnMovi.Name = "BtnMovi";
+            this.BtnMovi.Size = new System.Drawing.Size(137, 54);
+            this.BtnMovi.TabIndex = 0;
+            this.BtnMovi.Text = "Movimentação";
+            this.BtnMovi.UseVisualStyleBackColor = true;
+            this.BtnMovi.Click += new System.EventHandler(this.BtnMovi_Click);
             // 
             // label1
             // 
@@ -162,38 +173,61 @@
             // 
             // btnNotificacoes
             // 
-            this.btnNotificacoes.Location = new System.Drawing.Point(325, 203);
+            this.btnNotificacoes.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnNotificacoes.FlatAppearance.BorderSize = 0;
+            this.btnNotificacoes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNotificacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNotificacoes.Location = new System.Drawing.Point(143, 99);
             this.btnNotificacoes.Name = "btnNotificacoes";
-            this.btnNotificacoes.Size = new System.Drawing.Size(75, 23);
+            this.btnNotificacoes.Size = new System.Drawing.Size(90, 23);
             this.btnNotificacoes.TabIndex = 3;
             this.btnNotificacoes.Text = "Notificações";
-            this.btnNotificacoes.UseVisualStyleBackColor = true;
+            this.btnNotificacoes.UseVisualStyleBackColor = false;
             this.btnNotificacoes.Click += new System.EventHandler(this.btnNotificacoes_Click);
             // 
             // rtbRelatorio
             // 
-            this.rtbRelatorio.Location = new System.Drawing.Point(431, 124);
+            this.rtbRelatorio.Location = new System.Drawing.Point(143, 121);
             this.rtbRelatorio.Name = "rtbRelatorio";
             this.rtbRelatorio.ReadOnly = true;
             this.rtbRelatorio.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbRelatorio.Size = new System.Drawing.Size(283, 138);
+            this.rtbRelatorio.Size = new System.Drawing.Size(292, 238);
             this.rtbRelatorio.TabIndex = 4;
             this.rtbRelatorio.Text = "";
+            // 
+            // BtnSair
+            // 
+            this.BtnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSair.FlatAppearance.BorderSize = 0;
+            this.BtnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.BtnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSair.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnSair.Location = new System.Drawing.Point(1125, 3);
+            this.BtnSair.Name = "BtnSair";
+            this.BtnSair.Size = new System.Drawing.Size(57, 32);
+            this.BtnSair.TabIndex = 0;
+            this.BtnSair.Text = "Sair";
+            this.BtnSair.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.BtnSair.UseVisualStyleBackColor = true;
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 681);
-            this.Controls.Add(this.rtbRelatorio);
             this.Controls.Add(this.btnNotificacoes);
+            this.Controls.Add(this.rtbRelatorio);
             this.Controls.Add(this.lblBemVindo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frmmenu";
             this.Load += new System.EventHandler(this.Menu_Load);
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -205,13 +239,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button Desligar;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnPesquisar;
+        private System.Windows.Forms.Button BtnCadUsu;
+        private System.Windows.Forms.Button BtnCadPeca;
+        private System.Windows.Forms.Button BtnMovi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblBemVindo;
         private System.Windows.Forms.Button btnNotificacoes;
         private System.Windows.Forms.RichTextBox rtbRelatorio;
+        private System.Windows.Forms.Button BtnSair;
     }
 }

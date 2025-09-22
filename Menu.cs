@@ -17,7 +17,7 @@ namespace projeto_1
 {
     public partial class Menu : Form
     {
-        Thread ntclick;
+        Thread ntclick, ntMovi, ntPeca, ntCad, ntPesquisa;
         public Menu()
         {
             InitializeComponent();
@@ -138,6 +138,58 @@ namespace projeto_1
             {
                 MessageBox.Show("Erro ao gerar relatório: " + ex.Message);
             }
+        }
+
+        private void BtnMovi_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ntMovi = new Thread(novoFrMovi);
+            ntMovi.SetApartmentState(ApartmentState.STA);
+            ntMovi.Start();
+        }
+
+        private void BtnCadPeca_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ntPeca = new Thread(novoFrMovi1);
+            ntPeca.SetApartmentState(ApartmentState.STA);
+            ntPeca.Start();
+        }
+
+        private void novoFrMovi1()
+        {
+            Application.Run(new FrmPecas());
+        }
+
+        private void BtnPesquisar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ntPesquisa = new Thread(novoFrMovi3);
+            ntPesquisa.SetApartmentState(ApartmentState.STA);
+            ntPesquisa.Start();
+        }
+
+        private void novoFrMovi3()
+        {
+            Application.Run(new FrmPesquisas());
+        }
+
+        private void BtnCadUsu_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ntCad = new Thread(novoFrMovi2);
+            ntCad.SetApartmentState(ApartmentState.STA);
+            ntCad.Start();
+        }
+
+        private void novoFrMovi2()
+        {
+            Application.Run(new FrmCadastro());
+        }
+
+        private void novoFrMovi()
+        {
+            Application.Run(new FrmMovimentacao());
         }
     }
 }

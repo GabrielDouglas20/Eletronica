@@ -310,6 +310,7 @@
             // 
             // BtnSair
             // 
+            this.BtnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSair.FlatAppearance.BorderSize = 0;
             this.BtnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -318,7 +319,7 @@
             this.BtnSair.Name = "BtnSair";
             this.BtnSair.Size = new System.Drawing.Size(87, 39);
             this.BtnSair.TabIndex = 16;
-            this.BtnSair.Text = "SAIR";
+            this.BtnSair.Text = "LOGIN";
             this.BtnSair.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.BtnSair.UseVisualStyleBackColor = true;
             this.BtnSair.Click += new System.EventHandler(this.BtnSair_Click);

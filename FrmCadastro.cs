@@ -74,6 +74,8 @@ namespace projeto_1
             string endereco = txtendereco.Text;
             string cargo = txtcargo.Text;
             string senha = txtsenha.Text;
+            string data_nascimento = txtdatanasci.Text;
+            string data_admissao = txtdatadeadmissao.Text;
 
             if (string.IsNullOrWhiteSpace(nome))
             {
@@ -82,7 +84,7 @@ namespace projeto_1
                 return;
             }
             CadastroUsuarios db = new CadastroUsuarios();
-            if (db.AdicionarUsuario(id, cpf, nome, email, telefone, endereco, cargo, senha))
+            if (db.AdicionarUsuario(id, cpf, nome, email, telefone, endereco, cargo, senha, data_nascimento, data_admissao))
             {
                 MessageBox.Show("Cliente cadastrado com sucesso!", "sucesso",
                  MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -109,6 +111,8 @@ namespace projeto_1
                 dataGridView1.Columns["endereco"].HeaderText = "endereço";
                 dataGridView1.Columns["cargo"].HeaderText = "cargo";
                 dataGridView1.Columns["senha"].HeaderText = "senha";
+                dataGridView1.Columns["data_nascimento"].HeaderText = "data_nascimento";
+                dataGridView1.Columns["data_admissao"].HeaderText = "data_admissao";
                 dataGridView1.Columns["id"].Visible = false;
             }
         }
@@ -129,6 +133,8 @@ namespace projeto_1
                 txtendereco.Text = row.Cells["endereco"].Value.ToString();
                 txtcargo.Text = row.Cells["cargo"].Value.ToString();
                 txtsenha.Text = row.Cells["senha"].Value.ToString();
+                txtsenha.Text = row.Cells["data_nascimento"].Value.ToString();
+                txtsenha.Text = row.Cells["data_admissao"].Value.ToString();
             }
         }
         private void AskCpf_TextChanged(object sender, EventArgs e)
@@ -163,9 +169,11 @@ namespace projeto_1
             string endereco = txtendereco.Text;
             string cargo = txtcargo.Text;
             string senha = txtsenha.Text;
+            string data_nascimento = txtdatanasci.Text;
+            string data_admissao = txtdatadeadmissao.Text;
 
             CadastroUsuarios db = new CadastroUsuarios();
-            if (db.AdicionarUsuario(id, cpf, nome, email, telefone, endereco, cargo, senha))
+            if (db.AdicionarUsuario(id, cpf, nome, email, telefone, endereco, cargo, senha, data_nascimento, data_admissao))
             {
                 MessageBox.Show("Cliente atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparCampos();

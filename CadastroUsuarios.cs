@@ -15,14 +15,14 @@ namespace projeto_1
 
 
 
-        public bool AdicionarUsuario(int id, string cpf, string nome, string email, string telefone, string endereco, string cargo, string senha)
+        public bool AdicionarUsuario(int id, string cpf, string nome, string email, string telefone, string endereco, string cargo, string senha, string data_nascimento, string data_admissao)
         {
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
             {
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "INSERT INTO cadastro (cpf, nome, email, telefone, endereco, cargo, senha) VALUES (@cpf,@nome,@email,@telefone,@endereco,@cargo,@senha)";
+                    string comandoSql = "INSERT INTO cadastro (cpf, nome, email, telefone, endereco, cargo, senha, data_nascimento, data_admissao) VALUES (@cpf,@nome,@email,@telefone,@endereco,@cargo,@senha,@data_nascimento,@data_admissao )";
                     using (MySqlCommand comand = new MySqlCommand(comandoSql, conexao))
                     {
                         comand.Parameters.AddWithValue("@cpf", cpf);
@@ -32,6 +32,8 @@ namespace projeto_1
                         comand.Parameters.AddWithValue("@endereco", endereco);
                         comand.Parameters.AddWithValue("@cargo", cargo);
                         comand.Parameters.AddWithValue("@senha", senha);
+                        comand.Parameters.AddWithValue("@data_nascimento", data_nascimento);
+                        comand.Parameters.AddWithValue("@data_admissao", data_admissao);
 
                         int linhasAfetadas = comand.ExecuteNonQuery();
                         return linhasAfetadas > 0;
@@ -64,7 +66,7 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "SELECT id,cpf, nome, email, telefone, endereco, cargo, senha From  cadastro ORDER BY cpf ASC";
+                    string comandoSql = "SELECT id,cpf, nome, email, telefone, endereco, cargo, senha, data_nascimento, data_admissao  From  cadastro ORDER BY cpf ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.Fill(dataTable);
@@ -87,7 +89,7 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "SELECT id, cpf, nome, email, telefone, endereco, cargo, senha FROM cadastro WHERE nome LIKE @criterio OR cpf LIKE @criterio ORDER BY nome ASC";
+                    string comandoSql = "SELECT id, cpf, nome, email, telefone, endereco, cargo, senha, data_nascimento, data_admissao FROM cadastro WHERE nome LIKE @criterio OR cpf LIKE @criterio ORDER BY nome ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.SelectCommand.Parameters.AddWithValue("@criterio", "%" + criterio + "%");
@@ -104,7 +106,7 @@ namespace projeto_1
 
 
         // --- MÉTODO PARA ATUALIZAR UM CONTATO EXISTENTE ---
-        public bool AtualizarUsuario(int id, string cpf, string nome, string email, string telefone, string endereco, string cargo, string senha)
+        public bool AtualizarUsuario(int id, string cpf, string nome, string email, string telefone, string endereco, string cargo, string senha, string data_nascimento, string data_admissao)
         {
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
             {
@@ -114,7 +116,7 @@ namespace projeto_1
 
                     // O comando UPDATE usa SET para definir os novos valores e WHERE para especificar QUAL registro atualizar.
                     // É CRUCIAL usar o WHERE id = @id, senão você atualizaria TODOS os contatos do banco!
-                    string comandoSql = "UPDATE cadastro SET cpf = @cpf, nome = @nome, email = @email, telefone = @telefone, endereco = @endereco, cargo=@cargo, senha = @senha WHERE id = @id";
+                    string comandoSql = "UPDATE cadastro SET cpf = @cpf, nome = @nome, email = @email, telefone = @telefone, endereco = @endereco, cargo=@cargo, senha = @senha, data_nascimento = @data_nascimento, data_admissao = @data_admissao WHERE id = @id";
 
                     using (MySqlCommand comando = new MySqlCommand(comandoSql, conexao))
                     {
@@ -126,7 +128,8 @@ namespace projeto_1
                         comando.Parameters.AddWithValue("@endereco", endereco);
                         comando.Parameters.AddWithValue("@cargo", cargo);
                         comando.Parameters.AddWithValue("@senha", senha);
-                        comando.Parameters.AddWithValue("@id", id);
+                        comando.Parameters.AddWithValue("@data_nascimento", data_nascimento);
+                        comando.Parameters.AddWithValue("@data_admissao", data_admissao);
 
                         int linhasAfetadas = comando.ExecuteNonQuery();
 
@@ -194,7 +197,7 @@ namespace projeto_1
 
                         int count = Convert.ToInt32(comando.ExecuteScalar());
 
-                        return count > 0; // true = login válido
+                        return count == 0; // true = login válido
                     }
                 }
                 catch (Exception ex)

@@ -66,7 +66,7 @@ namespace projeto_1
 
         private void Desligar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void Menu_Load(object sender, EventArgs e)

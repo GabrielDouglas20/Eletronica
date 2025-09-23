@@ -45,8 +45,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Desligar = new System.Windows.Forms.Button();
             this.BtnVoltar = new System.Windows.Forms.Button();
+            this.Desligar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidademin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPecas)).BeginInit();
             this.panel1.SuspendLayout();
@@ -91,7 +91,9 @@
             // 
             // dgvPecas
             // 
-            this.dgvPecas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPecas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPecas.BackgroundColor = System.Drawing.Color.White;
             this.dgvPecas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPecas.Location = new System.Drawing.Point(121, 118);
@@ -233,6 +235,19 @@
             this.panel2.Size = new System.Drawing.Size(124, 572);
             this.panel2.TabIndex = 16;
             // 
+            // BtnVoltar
+            // 
+            this.BtnVoltar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnVoltar.FlatAppearance.BorderSize = 0;
+            this.BtnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVoltar.Location = new System.Drawing.Point(3, 450);
+            this.BtnVoltar.Name = "BtnVoltar";
+            this.BtnVoltar.Size = new System.Drawing.Size(118, 54);
+            this.BtnVoltar.TabIndex = 27;
+            this.BtnVoltar.Text = "VOLTAR";
+            this.BtnVoltar.UseVisualStyleBackColor = true;
+            this.BtnVoltar.Click += new System.EventHandler(this.BtnVoltar_Click);
+            // 
             // Desligar
             // 
             this.Desligar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -241,24 +256,12 @@
             this.Desligar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Desligar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Desligar.Image = global::projeto_1.Properties.Resources.off1;
-            this.Desligar.Location = new System.Drawing.Point(2, 497);
+            this.Desligar.Location = new System.Drawing.Point(2, 505);
             this.Desligar.Name = "Desligar";
             this.Desligar.Size = new System.Drawing.Size(119, 54);
             this.Desligar.TabIndex = 26;
             this.Desligar.UseVisualStyleBackColor = true;
             this.Desligar.Click += new System.EventHandler(this.Desligar_Click);
-            // 
-            // BtnVoltar
-            // 
-            this.BtnVoltar.FlatAppearance.BorderSize = 0;
-            this.BtnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVoltar.Location = new System.Drawing.Point(3, 437);
-            this.BtnVoltar.Name = "BtnVoltar";
-            this.BtnVoltar.Size = new System.Drawing.Size(118, 54);
-            this.BtnVoltar.TabIndex = 27;
-            this.BtnVoltar.Text = "VOLTAR";
-            this.BtnVoltar.UseVisualStyleBackColor = true;
-            this.BtnVoltar.Click += new System.EventHandler(this.BtnVoltar_Click);
             // 
             // FrmPecas
             // 
@@ -269,7 +272,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvPecas);
             this.Name = "FrmPecas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPecas";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidademin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPecas)).EndInit();
             this.panel1.ResumeLayout(false);

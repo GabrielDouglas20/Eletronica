@@ -51,12 +51,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnSair = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtdatanasci = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Desligar = new System.Windows.Forms.Button();
+            this.txtdatadeadmissao = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -280,11 +280,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtdatadeadmissao);
             this.panel1.Controls.Add(this.BtnSair);
-            this.panel1.Controls.Add(this.maskedTextBox1);
+            this.panel1.Controls.Add(this.txtdatanasci);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnDeletar);
             this.panel1.Controls.Add(this.AskCpf);
@@ -324,13 +324,13 @@
             this.BtnSair.UseVisualStyleBackColor = true;
             this.BtnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
-            // maskedTextBox1
+            // txtdatanasci
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(595, 80);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 26;
+            this.txtdatanasci.Location = new System.Drawing.Point(595, 80);
+            this.txtdatanasci.Mask = "00/00/0000";
+            this.txtdatanasci.Name = "txtdatanasci";
+            this.txtdatanasci.Size = new System.Drawing.Size(61, 20);
+            this.txtdatanasci.TabIndex = 26;
             // 
             // label9
             // 
@@ -351,13 +351,6 @@
             this.label8.Size = new System.Drawing.Size(146, 13);
             this.label8.TabIndex = 24;
             this.label8.Text = "DATA DE NASCIMENTO";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(732, 28);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 23;
             // 
             // panel2
             // 
@@ -388,6 +381,14 @@
             this.Desligar.UseVisualStyleBackColor = true;
             this.Desligar.Click += new System.EventHandler(this.Desligar_Click);
             // 
+            // txtdatadeadmissao
+            // 
+            this.txtdatadeadmissao.Location = new System.Drawing.Point(732, 27);
+            this.txtdatadeadmissao.Mask = "00/00/0000";
+            this.txtdatadeadmissao.Name = "txtdatadeadmissao";
+            this.txtdatadeadmissao.Size = new System.Drawing.Size(66, 20);
+            this.txtdatadeadmissao.TabIndex = 29;
+            // 
             // FrmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,6 +400,7 @@
             this.Name = "FrmCadastro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -432,12 +434,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtdatanasci;
         private System.Windows.Forms.Button BtnSair;
         private System.Windows.Forms.Button Desligar;
+        private System.Windows.Forms.MaskedTextBox txtdatadeadmissao;
     }
 }
 

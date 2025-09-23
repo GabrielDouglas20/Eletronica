@@ -67,7 +67,7 @@
             // txtsenha
             // 
             this.txtsenha.Location = new System.Drawing.Point(50, 144);
-            this.txtsenha.MaxLength = 10;
+            this.txtsenha.MaxLength = 255;
             this.txtsenha.Name = "txtsenha";
             this.txtsenha.Size = new System.Drawing.Size(78, 20);
             this.txtsenha.TabIndex = 3;

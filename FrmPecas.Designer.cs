@@ -46,6 +46,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Desligar = new System.Windows.Forms.Button();
+            this.BtnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidademin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPecas)).BeginInit();
             this.panel1.SuspendLayout();
@@ -225,6 +226,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.BtnVoltar);
             this.panel2.Controls.Add(this.Desligar);
             this.panel2.Location = new System.Drawing.Point(0, 118);
             this.panel2.Name = "panel2";
@@ -245,6 +247,18 @@
             this.Desligar.TabIndex = 26;
             this.Desligar.UseVisualStyleBackColor = true;
             this.Desligar.Click += new System.EventHandler(this.Desligar_Click);
+            // 
+            // BtnVoltar
+            // 
+            this.BtnVoltar.FlatAppearance.BorderSize = 0;
+            this.BtnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVoltar.Location = new System.Drawing.Point(3, 437);
+            this.BtnVoltar.Name = "BtnVoltar";
+            this.BtnVoltar.Size = new System.Drawing.Size(118, 54);
+            this.BtnVoltar.TabIndex = 27;
+            this.BtnVoltar.Text = "VOLTAR";
+            this.BtnVoltar.UseVisualStyleBackColor = true;
+            this.BtnVoltar.Click += new System.EventHandler(this.BtnVoltar_Click);
             // 
             // FrmPecas
             // 
@@ -285,5 +299,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button Desligar;
+        private System.Windows.Forms.Button BtnVoltar;
     }
 }

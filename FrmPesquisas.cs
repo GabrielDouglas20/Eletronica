@@ -170,5 +170,19 @@ namespace projeto_1
         private void maskePecaP_MaskInputRejected(object sender, MaskInputRejectedEventArgs e) { }
 
         private void dataGridViewPecasP_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void BtnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            nt = new Thread(novoFrmmenu);
+            nt.SetApartmentState(ApartmentState.STA);
+            nt.Start();
+        }
+
+        private void novoFrmmenu()
+        {
+            Application.Run(new Menu());
+        
+    }
     }
 }

@@ -160,7 +160,7 @@
             this.btnEntrar.FlatAppearance.BorderSize = 0;
             this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEntrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEntrar.Location = new System.Drawing.Point(0, 465);
+            this.btnEntrar.Location = new System.Drawing.Point(0, 470);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(121, 42);
             this.btnEntrar.TabIndex = 12;

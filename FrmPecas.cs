@@ -1,20 +1,22 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using projeto_1.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using projeto_1.Data;
 
 namespace projeto_1
 
 {
     public partial class FrmPecas : Form
     {
+        Thread nt;
         public FrmPecas()
         {
             InitializeComponent();
@@ -157,5 +159,19 @@ namespace projeto_1
         {
             this.Close();
         }
+
+        private void BtnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            nt = new Thread(novoFrmmenu);
+            nt.SetApartmentState(ApartmentState.STA);
+            nt.Start();
+        }
+
+        private void novoFrmmenu()
+        {
+            Application.Run(new Menu());
+        
+    }
     }
 }

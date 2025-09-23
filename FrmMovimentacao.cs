@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +15,7 @@ namespace projeto_1
 {
     public partial class FrmMovimentacao : Form
     {
+        Thread nt;
         public FrmMovimentacao()
         {
             InitializeComponent();
@@ -242,6 +244,19 @@ namespace projeto_1
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            nt = new Thread(novoFrmmenu);
+            nt.SetApartmentState(ApartmentState.STA);
+            nt.Start();
+        }
+
+        private void novoFrmmenu()
+        {
+            Application.Run(new Menu());
         }
     }
 }

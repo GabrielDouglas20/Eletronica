@@ -17,7 +17,7 @@ namespace projeto_1
 {
     public partial class Menu : Form
     {
-        Thread ntclick, ntMovi, ntPeca, ntCad, ntPesquisa;
+        Thread ntclick, ntMovi, ntPeca, ntCad, ntPesquisa, nt;
         public Menu()
         {
             InitializeComponent();
@@ -168,6 +168,20 @@ namespace projeto_1
             ntPesquisa.SetApartmentState(ApartmentState.STA);
             ntPesquisa.Start();
         }
+
+        private void BtnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            nt = new Thread(novoFrmmenu);
+            nt.SetApartmentState(ApartmentState.STA);
+            nt.Start();
+        }
+
+        private void novoFrmmenu()
+        {
+            Application.Run(new FrmLogin());
+        }
+        
 
         private void novoFrMovi3()
         {

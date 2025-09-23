@@ -39,9 +39,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.BtnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPecasP)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,6 +146,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.BtnVoltar);
             this.panel2.Location = new System.Drawing.Point(0, 117);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(144, 580);
@@ -162,6 +165,19 @@
             this.panel3.Size = new System.Drawing.Size(961, 118);
             this.panel3.TabIndex = 10;
             // 
+            // BtnVoltar
+            // 
+            this.BtnVoltar.FlatAppearance.BorderSize = 0;
+            this.BtnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnVoltar.Location = new System.Drawing.Point(3, 500);
+            this.BtnVoltar.Name = "BtnVoltar";
+            this.BtnVoltar.Size = new System.Drawing.Size(138, 63);
+            this.BtnVoltar.TabIndex = 0;
+            this.BtnVoltar.Text = "VOLTAR";
+            this.BtnVoltar.UseVisualStyleBackColor = true;
+            this.BtnVoltar.Click += new System.EventHandler(this.BtnVoltar_Click);
+            // 
             // FrmPesquisas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,6 +195,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPecasP)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -198,5 +215,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button BtnVoltar;
     }
 }

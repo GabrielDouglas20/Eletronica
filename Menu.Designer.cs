@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnSair = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Desligar = new System.Windows.Forms.Button();
             this.BtnPesquisar = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.lblBemVindo = new System.Windows.Forms.Label();
             this.btnNotificacoes = new System.Windows.Forms.Button();
             this.rtbRelatorio = new System.Windows.Forms.RichTextBox();
-            this.BtnSair = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +54,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1200, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // BtnSair
+            // 
+            this.BtnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSair.FlatAppearance.BorderSize = 0;
+            this.BtnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.BtnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSair.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnSair.Location = new System.Drawing.Point(1138, 3);
+            this.BtnSair.Name = "BtnSair";
+            this.BtnSair.Size = new System.Drawing.Size(44, 27);
+            this.BtnSair.TabIndex = 0;
+            this.BtnSair.Text = "Sair";
+            this.BtnSair.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.BtnSair.UseVisualStyleBackColor = true;
+            this.BtnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
             // panel2
             // 
@@ -95,7 +113,7 @@
             this.BtnPesquisar.Name = "BtnPesquisar";
             this.BtnPesquisar.Size = new System.Drawing.Size(137, 54);
             this.BtnPesquisar.TabIndex = 0;
-            this.BtnPesquisar.Text = "Pesquisar / Filtrar";
+            this.BtnPesquisar.Text = "PESQUISAR";
             this.BtnPesquisar.UseVisualStyleBackColor = true;
             this.BtnPesquisar.Click += new System.EventHandler(this.BtnPesquisar_Click);
             // 
@@ -111,7 +129,7 @@
             this.BtnCadUsu.Name = "BtnCadUsu";
             this.BtnCadUsu.Size = new System.Drawing.Size(137, 54);
             this.BtnCadUsu.TabIndex = 0;
-            this.BtnCadUsu.Text = "Cadastro - Usuário / Cliente";
+            this.BtnCadUsu.Text = "CADASTRO DE USUÁRIO";
             this.BtnCadUsu.UseVisualStyleBackColor = true;
             this.BtnCadUsu.Click += new System.EventHandler(this.BtnCadUsu_Click);
             // 
@@ -127,7 +145,7 @@
             this.BtnCadPeca.Name = "BtnCadPeca";
             this.BtnCadPeca.Size = new System.Drawing.Size(137, 54);
             this.BtnCadPeca.TabIndex = 0;
-            this.BtnCadPeca.Text = "Cadastro de Peças";
+            this.BtnCadPeca.Text = "CADASTRO DE PEÇAS";
             this.BtnCadPeca.UseVisualStyleBackColor = true;
             this.BtnCadPeca.Click += new System.EventHandler(this.BtnCadPeca_Click);
             // 
@@ -143,7 +161,7 @@
             this.BtnMovi.Name = "BtnMovi";
             this.BtnMovi.Size = new System.Drawing.Size(137, 54);
             this.BtnMovi.TabIndex = 0;
-            this.BtnMovi.Text = "Movimentação";
+            this.BtnMovi.Text = "MOVIMENTAÇÃO";
             this.BtnMovi.UseVisualStyleBackColor = true;
             this.BtnMovi.Click += new System.EventHandler(this.BtnMovi_Click);
             // 
@@ -179,9 +197,9 @@
             this.btnNotificacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNotificacoes.Location = new System.Drawing.Point(143, 99);
             this.btnNotificacoes.Name = "btnNotificacoes";
-            this.btnNotificacoes.Size = new System.Drawing.Size(90, 23);
+            this.btnNotificacoes.Size = new System.Drawing.Size(122, 23);
             this.btnNotificacoes.TabIndex = 3;
-            this.btnNotificacoes.Text = "Notificações";
+            this.btnNotificacoes.Text = "NOTIFICAÇÕES";
             this.btnNotificacoes.UseVisualStyleBackColor = false;
             this.btnNotificacoes.Click += new System.EventHandler(this.btnNotificacoes_Click);
             // 
@@ -194,23 +212,6 @@
             this.rtbRelatorio.Size = new System.Drawing.Size(292, 238);
             this.rtbRelatorio.TabIndex = 4;
             this.rtbRelatorio.Text = "";
-            // 
-            // BtnSair
-            // 
-            this.BtnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSair.FlatAppearance.BorderSize = 0;
-            this.BtnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.BtnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSair.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnSair.Location = new System.Drawing.Point(1125, 3);
-            this.BtnSair.Name = "BtnSair";
-            this.BtnSair.Size = new System.Drawing.Size(57, 32);
-            this.BtnSair.TabIndex = 0;
-            this.BtnSair.Text = "Sair";
-            this.BtnSair.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.BtnSair.UseVisualStyleBackColor = true;
             // 
             // Menu
             // 

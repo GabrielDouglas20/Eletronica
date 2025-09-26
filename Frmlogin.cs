@@ -27,6 +27,7 @@ namespace projeto_1
 
             {
                 MessageBox.Show("Preencha os campos por favor.", "Campos vazios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             CadastroUsuarios db = new CadastroUsuarios();

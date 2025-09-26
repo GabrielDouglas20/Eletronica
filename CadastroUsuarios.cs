@@ -116,7 +116,7 @@ namespace projeto_1
 
                     // O comando UPDATE usa SET para definir os novos valores e WHERE para especificar QUAL registro atualizar.
                     // É CRUCIAL usar o WHERE id = @id, senão você atualizaria TODOS os contatos do banco!
-                    string comandoSql = "UPDATE cadastro SET cpf = @cpf, nome = @nome, email = @email, telefone = @telefone, endereco = @endereco, cargo=@cargo, senha = @senha, data_nascimento = @data_nascimento, data_admissao = @data_admissao WHERE id = @id";
+                    string comandoSql = "UPDATE cadastro SET cpf = @cpf, nome = @nome, email = @email, telefone = @telefone, endereco = @endereco, cargo = @cargo, senha = @senha, data_nascimento = @data_nascimento, data_admissao = @data_admissao WHERE id = @id";
 
                     using (MySqlCommand comando = new MySqlCommand(comandoSql, conexao))
                     {

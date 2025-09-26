@@ -133,8 +133,8 @@ namespace projeto_1
                 txtendereco.Text = row.Cells["endereco"].Value.ToString();
                 txtcargo.Text = row.Cells["cargo"].Value.ToString();
                 txtsenha.Text = row.Cells["senha"].Value.ToString();
-                txtsenha.Text = row.Cells["data_nascimento"].Value.ToString();
-                txtsenha.Text = row.Cells["data_admissao"].Value.ToString();
+                txtdatanasci.Text = row.Cells["data_nascimento"].Value.ToString();
+                txtdatadeadmissao.Text = row.Cells["data_admissao"].Value.ToString();
             }
         }
         private void AskCpf_TextChanged(object sender, EventArgs e)
@@ -189,7 +189,10 @@ namespace projeto_1
             txtendereco.Clear();
             txtcargo.Clear();
             txtsenha.Clear();
-            id = 0; 
+            txtdatanasci.Clear();
+            txtdatadeadmissao.Clear();
+
+           id = 0; 
          
         }
 

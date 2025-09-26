@@ -1,4 +1,5 @@
-﻿using System;
+﻿//PARTE DE GABRIEL
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -210,13 +211,13 @@ namespace projeto_1
                MessageBoxIcon.Warning
            );
 
-            // 3. Se o usuário confirmar clicando em "Sim" (Yes)...
+            
             if (confirmacao == DialogResult.Yes)
                 {
-                // 4. Cria a instância da classe de acesso a dados
+               // INSTANCIA DO BANCO
                 CadastroUsuarios db = new CadastroUsuarios();
 
-                // 5. Chama o novo método ExcluirContato
+                
                 if (db.ExcluirUsuario(id))
                 
                     {

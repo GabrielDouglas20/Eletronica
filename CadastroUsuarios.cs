@@ -1,14 +1,17 @@
-﻿using System;
+﻿//PARTE DE GABRIEL
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using System.Data; // Necessário para usar o DataTable
+using System.Data;
 using System.Windows.Forms;
 
 namespace projeto_1
 {
+    //CONEXÃO COM O BANCO PARA CADASTRAR UM USUARIO
     public class CadastroUsuarios
     {
         private readonly string stringDeConexao = "Server=localhost;Database=eletronica;User=root;Password=123456;";
@@ -58,6 +61,7 @@ namespace projeto_1
                 }
             }
         }
+        //TABELA PARA PESQUISA
         public DataTable PesquisarUsuario()
         {
             DataTable dataTable = new DataTable();
@@ -80,7 +84,7 @@ namespace projeto_1
             }
             return dataTable;
         }
-        // --- MÉTODO PARA PESQUISAR CONTATOS POR UM CRITÉRIO (NOME OU CPF) ---
+        // -MÉTODO PARA PESQUISAR CONTATOS POR UM CRITÉRIO (NOME)
         public DataTable PesquisarUsuario(string criterio)
         {
             DataTable dataTable = new DataTable();
@@ -105,7 +109,7 @@ namespace projeto_1
         }
 
 
-        // --- MÉTODO PARA ATUALIZAR UM CONTATO EXISTENTE ---
+        // MÉTODO PARA ATUALIZAR UM USUARIO
         public bool AtualizarUsuario(int id, string cpf, string nome, string email, string telefone, string endereco, string cargo, string senha, string data_nascimento, string data_admissao)
         {
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
@@ -130,10 +134,11 @@ namespace projeto_1
                         comando.Parameters.AddWithValue("@senha", senha);
                         comando.Parameters.AddWithValue("@data_nascimento", data_nascimento);
                         comando.Parameters.AddWithValue("@data_admissao", data_admissao);
+                        comando.Parameters.AddWithValue("@id", id);
 
                         int linhasAfetadas = comando.ExecuteNonQuery();
 
-                        // Se uma linha foi afetada, a atualização foi bem-sucedida.
+                       
                         return linhasAfetadas > 0;
                     }
                 }
@@ -145,7 +150,7 @@ namespace projeto_1
             }
         }
 
-        // --- MÉTODO PARA EXCLUIR UM CONTATO ---
+        // MÉTODO PARA EXCLUIR UM USUARIO
         public bool ExcluirUsuario(int id)
         {
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
@@ -155,8 +160,6 @@ namespace projeto_1
                     conexao.Open();
 
                     // Comando SQL para deletar um registro específico.
-                    // A CLÁUSULA 'WHERE' É ABSOLUTAMENTE ESSENCIAL AQUI!
-                    // Sem ela, o comando deletaria TODOS os registros da tabela.
                     string comandoSql = "DELETE FROM cadastro WHERE id = @id";
 
                     using (MySqlCommand comando = new MySqlCommand(comandoSql, conexao))
@@ -180,6 +183,8 @@ namespace projeto_1
 
         }
 
+        // PARTE DE LOGIN
+
         public bool loginUsuario(string cpf, string senha)
         {
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
@@ -192,6 +197,7 @@ namespace projeto_1
 
                     using (MySqlCommand comando = new MySqlCommand(comandoSql, conexao))
                     {
+                        //PARAMETROS PARA LOGIN
                         comando.Parameters.AddWithValue("@cpf", cpf);
                         comando.Parameters.AddWithValue("@senha", senha);
 
@@ -203,7 +209,7 @@ namespace projeto_1
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao efetuar login: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    return false; // EM CASO DE ERRO RETORNAR
                 }
             }
         }

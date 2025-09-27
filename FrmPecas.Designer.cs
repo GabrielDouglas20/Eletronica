@@ -33,7 +33,6 @@
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.numQuantidademin = new System.Windows.Forms.NumericUpDown();
-            this.dgvPecas = new System.Windows.Forms.DataGridView();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -49,10 +48,11 @@
             this.Desligar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtquantidade = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidademin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPecas)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTipoPeca
@@ -90,18 +90,6 @@
             this.numQuantidademin.Name = "numQuantidademin";
             this.numQuantidademin.Size = new System.Drawing.Size(121, 20);
             this.numQuantidademin.TabIndex = 4;
-            // 
-            // dgvPecas
-            // 
-            this.dgvPecas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvPecas.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPecas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPecas.Location = new System.Drawing.Point(121, 118);
-            this.dgvPecas.Name = "dgvPecas";
-            this.dgvPecas.Size = new System.Drawing.Size(961, 569);
-            this.dgvPecas.TabIndex = 5;
             // 
             // btnSalvar
             // 
@@ -284,23 +272,31 @@
             this.txtquantidade.Size = new System.Drawing.Size(100, 20);
             this.txtquantidade.TabIndex = 16;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(346, 279);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 28;
+            // 
             // FrmPecas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1085, 681);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvPecas);
             this.Name = "FrmPecas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPecas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidademin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPecas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -312,7 +308,6 @@
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.NumericUpDown numQuantidademin;
-        private System.Windows.Forms.DataGridView dgvPecas;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnExcluir;
@@ -328,5 +323,6 @@
         private System.Windows.Forms.Button BtnVoltar;
         private System.Windows.Forms.TextBox txtquantidade;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

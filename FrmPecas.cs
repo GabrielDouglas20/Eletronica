@@ -29,46 +29,38 @@ namespace projeto_1
             dataGridView1.DataSource = db.Atualizarpeca();
             formatarGrid();
         }
-        private void FrmPecas_Load(object sender, EventArgs e)
+
+        private void formatarGrid()
         {
-            // Estado
-            cmbEstado.Items.Clear();
-            cmbEstado.Items.AddRange(new string[] { "NOVO", "USADO", "DEFEITO" });
-
-            // Propriedades DGV (caso não tenha setado no designer)
-            dgvPecas.ReadOnly = true;
-            dgvPecas.AllowUserToAddRows = false;
-            dgvPecas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPecas.MultiSelect = false;
-            dgvPecas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            CarregarPecas();
-        }
-
-        private void CarregarPecas()
-        {
-            try
+            if (dataGridView1.ColumnCount > 0)
             {
-                using (var conn = Database.GetConnection())
-                {
-                    conn.Open();
-                    string sql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min FROM pecas";
-                    using (MySqlDataAdapter da = new MySqlDataAdapter(sql, conn))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        dgvPecas.DataSource = dt;
-                    }
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.Columns["tipo_peca"].HeaderText = "tipo_peca";
+                dataGridView1.Columns["modelo"].HeaderText = "modelo";
+                dataGridView1.Columns["marca"].HeaderText = "marca";
+                dataGridView1.Columns["estado"].HeaderText = "estado";
+                dataGridView1.Columns["quantidade_min"].HeaderText = "quantidade_min";
+                dataGridView1.Columns["quantidade"].HeaderText = "quantidade";
 
-                    if (dgvPecas.Columns.Contains("id"))
-                        dgvPecas.Columns["id"].Visible = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao carregar peças: " + ex.Message);
             }
         }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Garante que não seja o cabeçalho
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                // Preenche os campos de texto com os valores da linha
+                txtTipoPeca.Text = row.Cells["tipo_peca"].Value.ToString();
+                txtModelo.Text = row.Cells["modelo"].Value.ToString();
+                txtMarca.Text = row.Cells["marca"].Value.ToString();
+                cmbEstado.Text = row.Cells["estado"].Value.ToString();
+                numQuantidademin.Text = row.Cells["quantidade_min"].Value.ToString();
+                txtquantidade.Text = row.Cells["quantidade"].Value.ToString();
+                
+            }
+        }
+       
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {

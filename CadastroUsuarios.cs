@@ -321,5 +321,39 @@ namespace projeto_1
                 }
             }
         }
+                 public bool Excluirpeca(int id)
+        {
+            using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
+            {
+                try
+                {
+                    conexao.Open();
+
+                    // Comando SQL para deletar um registro específico.
+                    string comandoSql = "DELETE FROM pecas WHERE id = @id";
+
+                    using (MySqlCommand comando = new MySqlCommand(comandoSql, conexao))
+                    {
+                        // Adiciona o parâmetro com o ID do registro a ser excluído
+                        comando.Parameters.AddWithValue("@id", id);
+
+                        // Executa o comando
+                        int linhasAfetadas = comando.ExecuteNonQuery();
+
+                        // Retorna true se uma linha foi afetada (excluída com sucesso)
+                        return linhasAfetadas > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao excluir peça: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+        }
     }
-}
+        }
+
+    
+

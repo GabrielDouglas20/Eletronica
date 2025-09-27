@@ -47,6 +47,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnVoltar = new System.Windows.Forms.Button();
             this.Desligar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtquantidade = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidademin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPecas)).BeginInit();
             this.panel1.SuspendLayout();
@@ -195,15 +197,17 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(189, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.Size = new System.Drawing.Size(114, 13);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Quantidade";
+            this.label5.Text = "Quantidade minima";
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.txtquantidade);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtTipoPeca);
             this.panel1.Controls.Add(this.txtModelo);
             this.panel1.Controls.Add(this.btnSair);
@@ -263,6 +267,23 @@
             this.Desligar.UseVisualStyleBackColor = true;
             this.Desligar.Click += new System.EventHandler(this.Desligar_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(343, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Quantidade";
+            // 
+            // txtquantidade
+            // 
+            this.txtquantidade.Location = new System.Drawing.Point(346, 78);
+            this.txtquantidade.Name = "txtquantidade";
+            this.txtquantidade.Size = new System.Drawing.Size(100, 20);
+            this.txtquantidade.TabIndex = 16;
+            // 
             // FrmPecas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,5 +326,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button Desligar;
         private System.Windows.Forms.Button BtnVoltar;
+        private System.Windows.Forms.TextBox txtquantidade;
+        private System.Windows.Forms.Label label6;
     }
 }

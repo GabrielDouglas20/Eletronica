@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static projeto_1.CadastroUsuarios;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -77,67 +78,29 @@ namespace projeto_1
 
         private void btnNotificacoes_Click(object sender, EventArgs e)
         {
-            try
+            RelatorioEstoque rel = new RelatorioEstoque();
+            var lista = rel.Gerar();
+
+            rtbRelatorio.Clear();
+            rtbRelatorio.AppendText($"{"ID",-5} {"Peça",-20} {"Qtd",-12} {"Mínimo",-10} Status\n");
+            rtbRelatorio.AppendText("---------------------------------------------------------------\n");
+
+            bool temBaixa = false;
+
+            foreach (var item in lista)
             {
-                using (var conn = Database.GetConnection())
-                {
-                    conn.Open();
+                string status = (item.quantidade < item.minimo) ? "⚠ Baixo" : "OK";
+                if (item.quantidade < item.minimo) temBaixa = true;
 
-                    string sql = @"
-                SELECT p.id, p.tipo_peca, e.quantidade, p.quantidade_min
-                FROM pecas p
-                JOIN estoque e ON e.id_peca = p.id";
-
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    rtbRelatorio.Clear();
-
-                    // Cabeçalho
-                    rtbRelatorio.AppendText(
-                        string.Format("{0,-15} {1,-5} {2,-12} {3,-8} {4}\n",
-                        "Peça", "ID", "Quantidade", "Mínimo", "Status")
-                    );
-                    rtbRelatorio.AppendText("---------------------------------------------------------------------------\n");
-
-                    // Linhas
-                    rtbRelatorio.AppendText(
-                        string.Format("{0,15} {1,-20} {2,-30} {3,-20} {4}\n",
-                        "", "", "", "", "")
-                    );
-
-                    bool temBaixa = false;
-
-                    while (reader.Read())
-                    {
-                        string id = reader["id"].ToString();
-                        string nomePeca = reader["tipo_peca"].ToString();
-                        int quantidade = Convert.ToInt32(reader["quantidade"]);
-                        int minimo = Convert.ToInt32(reader["quantidade_min"]);
-
-                        string status = (quantidade < minimo) ? "⚠ Baixo" : "OK";
-
-                        if (quantidade < minimo) temBaixa = true;
-
-                        // Monta linha formatada (alinhamento de colunas)
-                        rtbRelatorio.AppendText(
-                            $"{nomePeca,-15} {id,-4} {quantidade,-12} {minimo,-8} {status}\n"
-                        );
-                    }
-
-                    // Rodapé
-                    rtbRelatorio.AppendText("\n");
-
-                    if (!temBaixa)
-                        rtbRelatorio.AppendText("Todas as peças estão com estoque suficiente.");
-                    else
-                        rtbRelatorio.AppendText("⚠ Existem peças abaixo do estoque mínimo!");
-                }
+                rtbRelatorio.AppendText(
+                    $"{item.id,-5} {item.tipo,-20} {item.quantidade,-12} {item.minimo,-10} {status}\n"
+                );
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao gerar relatório: " + ex.Message);
-            }
+
+            rtbRelatorio.AppendText("\n");
+            rtbRelatorio.AppendText(temBaixa
+                ? "⚠ Existem peças abaixo do estoque mínimo!"
+                : "✅ Todas as peças estão com estoque suficiente.");
         }
 
         private void BtnMovi_Click(object sender, EventArgs e)

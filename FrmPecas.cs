@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static projeto_1.CadastroUsuarios;
 
 namespace projeto_1
 
@@ -20,9 +21,14 @@ namespace projeto_1
         public FrmPecas()
         {
             InitializeComponent();
-            this.Load += FrmPecas_Load;
+           
         }
-
+        private void CarregarDadosGrid()
+        {
+            CadastroUsuarios db = new CadastroUsuarios();
+            dataGridView1.DataSource = db.Atualizarpeca();
+            formatarGrid();
+        }
         private void FrmPecas_Load(object sender, EventArgs e)
         {
             // Estado
@@ -66,37 +72,27 @@ namespace projeto_1
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTipoPeca.Text) || cmbEstado.SelectedItem == null)
+            string tipo_peca = txtTipoPeca.Text;
+            string modelo = txtModelo.Text;
+            string marca = txtMarca.Text;
+            string estado = cmbEstado.Text;
+            string quantidade_min = numQuantidademin.Text;
+            string quantidade = txtquantidade.Text;
+            
+
+            if (string.IsNullOrWhiteSpace(tipo_peca))
             {
-                MessageBox.Show("Preencha ao menos Tipo de Peça e Estado!");
+                MessageBox.Show("O campo nome é obrigatorio", "atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTipoPeca.Focus();
                 return;
             }
-
-            try
+            Cadastropeca db = new Cadastropeca();
+            if (db.Adicionarpeca( tipo_peca, modelo, marca, estado, quantidade_min, quantidade))
             {
-                using (var conn = Database.GetConnection())
-                {
-                    conn.Open();
-                    string sql = @"INSERT INTO pecas (tipo_peca, modelo, marca, estado, quantidade_min) 
-                                   VALUES (@tipo, @modelo, @marca, @estado, @qtd)";
-                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@tipo", txtTipoPeca.Text.Trim());
-                        cmd.Parameters.AddWithValue("@modelo", txtModelo.Text.Trim());
-                        cmd.Parameters.AddWithValue("@marca", txtMarca.Text.Trim());
-                        cmd.Parameters.AddWithValue("@estado", cmbEstado.SelectedItem.ToString());
-                        cmd.Parameters.AddWithValue("@qtd", (int)numQuantidademin.Value);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Peça cadastrada com sucesso!");
+                MessageBox.Show("peça cadastrado com sucesso!", "sucesso",
+                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparCampos();
-                CarregarPecas();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao salvar peça: " + ex.Message);
+
             }
         }
 
@@ -138,7 +134,28 @@ namespace projeto_1
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            CarregarPecas();
+            if (dgvPecas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecione um cliente no grid antes de atualizar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            string tipo_peca = txtTipoPeca.Text;
+            string modelo = txtModelo.Text;
+            string marca = txtMarca.Text;
+            string estado = cmbEstado.Text;
+            string quantidade_min = numQuantidademin.Text;
+            string quantidade = txtquantidade.Text;
+
+
+            Cadastropeca db = new Cadastropeca();
+            if (db.Adicionarpeca(tipo_peca, modelo, marca, estado, quantidade_min, quantidade))
+            {
+                MessageBox.Show("Cliente atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimparCampos();
+                
+            }
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -151,6 +168,7 @@ namespace projeto_1
             txtTipoPeca.Clear();
             txtModelo.Clear();
             txtMarca.Clear();
+            txtquantidade.Clear();
             cmbEstado.SelectedIndex = -1;
             numQuantidademin.Value = 0;
         }

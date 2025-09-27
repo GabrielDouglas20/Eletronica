@@ -138,7 +138,7 @@ namespace projeto_1
 
                         int linhasAfetadas = comando.ExecuteNonQuery();
 
-                       
+
                         return linhasAfetadas > 0;
                     }
                 }
@@ -210,6 +210,114 @@ namespace projeto_1
                 {
                     MessageBox.Show("Erro ao efetuar login: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false; // EM CASO DE ERRO RETORNAR
+                }
+            }
+        }
+
+        public class Cadastropeca
+        {
+            private readonly string stringDeConexao = "Server=localhost;Database=eletronica;User=root;Password=123456;";
+
+
+
+            public bool Adicionarpeca( string tipo_peca, string modelo, string marca, string estado, string quantidade_min, string quantidade)
+            {
+                using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
+                {
+                    try
+                    {
+                        conexao.Open();
+                        string comandoSql = "INSERT INTO pecas (tipo_peca, modelo, marca, estado, quantidade_min, quantidade) VALUES (@tipo_peca,@modelo,@marca,@estado,@quantidade_min,@quantidade)";
+                        using (MySqlCommand comand = new MySqlCommand(comandoSql, conexao))
+                        {
+                            comand.Parameters.AddWithValue("@tipo_peca", tipo_peca);
+                            comand.Parameters.AddWithValue("@modelo", modelo);
+                            comand.Parameters.AddWithValue("@marca", marca);
+                            comand.Parameters.AddWithValue("@estado", estado);
+                            comand.Parameters.AddWithValue("@quantidade_min", quantidade_min);
+                            comand.Parameters.AddWithValue("@quantidade", quantidade);
+
+
+                            int linhasAfetadas = comand.ExecuteNonQuery();
+                            return linhasAfetadas > 0;
+                        }
+                    }
+                   
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public class RelatorioEstoque
+        {
+            private string connString = "Server=localhost;Database=eletronica;User=root;Password=123456;";
+
+            public List<(int id, string tipo, int quantidade, int minimo)> Gerar()
+            {
+                List<(int, string, int, int)> lista = new List<(int, string, int, int)>();
+
+                using (var conn = new MySqlConnection(connString))
+                {
+                    conn.Open();
+                    string sql = "SELECT id, tipo_peca, quantidade, quantidade_min FROM pecas";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["id"]);
+                        string tipo = reader["tipo_peca"].ToString();
+
+                        int quantidade = 0;
+                        int.TryParse(reader["quantidade"].ToString(), out quantidade);
+
+                        int minimo = Convert.ToInt32(reader["quantidade_min"]);
+
+                        lista.Add((id, tipo, quantidade, minimo));
+                    }
+                }
+
+                return lista;
+            }
+        }
+        public bool Atualizarpeca(int id, string tipo_peca, string modelo, string marca, string estado, string quantidade_min, string quantidade)
+        {
+            using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
+            {
+                try
+                {
+                    conexao.Open();
+
+                    // O comando UPDATE usa SET para definir os novos valores e WHERE para especificar QUAL registro atualizar.
+                    // É CRUCIAL usar o WHERE id = @id, senão você atualizaria TODOS os contatos do banco!
+                    string comandoSql = "UPDATE cadastro SET tipo_peca = @tipo_peca, modelo = @modelo, marca = @marca, estado = @estado, quantidade_min = @quantidade_min, quantidade = @quantidade WHERE id = @id";
+
+                    using (MySqlCommand comando = new MySqlCommand(comandoSql, conexao))
+                    {
+                        // Adiciona os parâmetros, incluindo o ID do registro a ser atualizado.
+                        comando.Parameters.AddWithValue("@tipo_peca", tipo_peca);
+                        comando.Parameters.AddWithValue("@modelo", modelo);
+                        comando.Parameters.AddWithValue("@marca", marca);
+                        comando.Parameters.AddWithValue("@estado", estado);
+                        comando.Parameters.AddWithValue("@quantidade_min", quantidade_min);
+                        comando.Parameters.AddWithValue("@quantidade", quantidade);
+                        comando.Parameters.AddWithValue("@id", id);
+
+                        int linhasAfetadas = comando.ExecuteNonQuery();
+
+
+                        return linhasAfetadas > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao atualizar peça: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
             }
         }

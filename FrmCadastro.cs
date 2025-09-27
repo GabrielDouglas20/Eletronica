@@ -89,6 +89,8 @@ namespace projeto_1
             {
                 MessageBox.Show("Cliente cadastrado com sucesso!", "sucesso",
                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimparCampos();
+                
             }
         }
 

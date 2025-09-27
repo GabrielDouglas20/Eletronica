@@ -106,7 +106,7 @@ namespace projeto_1
         private void CarregarPecasGrid()
         {
             ClassPesquisas db = new ClassPesquisas();
-            dataGridViewPecasP.DataSource = db.PesquisaPecas();
+            dataGridViewPecasP.DataSource = db.Pesquisarpeca();
 
             // Adiciona a coluna "quantidade" se não existir
             if (!dataGridViewPecasP.Columns.Contains("quantidade"))
@@ -132,16 +132,15 @@ namespace projeto_1
             if (dataGridViewPecasP.ColumnCount > 0)
             {
                 dataGridViewPecasP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewPecasP.Columns["id"].HeaderText = "id";
+                dataGridViewPecasP.Columns["tipo_peca"].HeaderText = "tipo_peca";
+                dataGridViewPecasP.Columns["modelo"].HeaderText = "modelo";
+                dataGridViewPecasP.Columns["marca"].HeaderText = "marca";
+                dataGridViewPecasP.Columns["estado"].HeaderText = "estado";
+                dataGridViewPecasP.Columns["quantidade_min"].HeaderText = "quantidade_min";
+                dataGridViewPecasP.Columns["quantidade"].HeaderText = "quantidade";
                 dataGridViewPecasP.Columns["id"].Visible = false;
-                dataGridViewPecasP.Columns["tipo_peca"].HeaderText = "Tipo da Peça";
-                dataGridViewPecasP.Columns["marca"].HeaderText = "Marca";
-                dataGridViewPecasP.Columns["estado"].HeaderText = "Estado";
-                dataGridViewPecasP.Columns["quantidade_min"].HeaderText = "Quantidade Mínima";
-                dataGridViewPecasP.Columns["modelo"].HeaderText = "Modelo";
-                if (dataGridViewPecasP.Columns.Contains("quantidade"))
-                    dataGridViewPecasP.Columns["quantidade"].HeaderText = "Quantidade (Visual)";
-                if (dataGridViewPecasP.Columns.Contains("quantidade_estoque"))
-                    dataGridViewPecasP.Columns["quantidade_estoque"].HeaderText = "Quantidade em Estoque";
+
             }
         }
 
@@ -152,7 +151,7 @@ namespace projeto_1
 
             if (string.IsNullOrEmpty(criterio))
             {
-                dataGridViewPecasP.DataSource = db.PesquisaPecas();
+                dataGridViewPecasP.DataSource = db.Pesquisarpeca();
             }
             else
             {

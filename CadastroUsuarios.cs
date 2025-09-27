@@ -220,7 +220,7 @@ namespace projeto_1
 
 
 
-            public bool Adicionarpeca( string tipo_peca, string modelo, string marca, string estado, string quantidade_min, string quantidade)
+            public bool Adicionarpeca(int id, string tipo_peca, string modelo, string marca, string estado, string quantidade_min, string quantidade)
             {
                 using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
                 {
@@ -295,7 +295,7 @@ namespace projeto_1
 
                     // O comando UPDATE usa SET para definir os novos valores e WHERE para especificar QUAL registro atualizar.
                     // É CRUCIAL usar o WHERE id = @id, senão você atualizaria TODOS os contatos do banco!
-                    string comandoSql = "UPDATE cadastro SET tipo_peca = @tipo_peca, modelo = @modelo, marca = @marca, estado = @estado, quantidade_min = @quantidade_min, quantidade = @quantidade WHERE id = @id";
+                    string comandoSql = "UPDATE pecas SET tipo_peca = @tipo_peca, modelo = @modelo, marca = @marca, estado = @estado, quantidade_min = @quantidade_min, quantidade = @quantidade WHERE id = @id";
 
                     using (MySqlCommand comando = new MySqlCommand(comandoSql, conexao))
                     {
@@ -351,6 +351,50 @@ namespace projeto_1
                 }
             }
 
+        }
+        public DataTable Pesquisarpeca(string criterio)
+        {
+            DataTable dataTable = new DataTable();
+            using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
+            {
+                try
+                {
+                    conexao.Open();
+                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade FROM pecas WHERE tipo_peca LIKE @criterio OR modelo LIKE @criterio ORDER BY tipo_peca ASC";
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
+                    {
+                        adapter.SelectCommand.Parameters.AddWithValue("@criterio", "%" + criterio + "%");
+                        adapter.Fill(dataTable);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao pesquisar peça: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return dataTable;
+        }
+        public DataTable Pesquisarpeca()
+        {
+            DataTable dataTable = new DataTable();
+            using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
+            {
+                try
+                {
+                    conexao.Open();
+                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade  From  pecas ORDER BY cpf ASC";
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao Listar usuario:" + ex.Message, "Erro",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return dataTable;
         }
     }
         }

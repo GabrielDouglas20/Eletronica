@@ -18,6 +18,7 @@ namespace projeto_1
     public partial class FrmPecas : Form
     {
         Thread nt;
+        int id = 0;
         public FrmPecas()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace projeto_1
         private void CarregarDadosGrid()
         {
             CadastroUsuarios db = new CadastroUsuarios();
-            dataGridView1.DataSource = db.Atualizarpeca();
+            dataGridView1.DataSource = db.Pesquisarpeca();
             formatarGrid();
         }
 
@@ -35,12 +36,14 @@ namespace projeto_1
             if (dataGridView1.ColumnCount > 0)
             {
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.Columns["id"].HeaderText = "id";
                 dataGridView1.Columns["tipo_peca"].HeaderText = "tipo_peca";
                 dataGridView1.Columns["modelo"].HeaderText = "modelo";
                 dataGridView1.Columns["marca"].HeaderText = "marca";
                 dataGridView1.Columns["estado"].HeaderText = "estado";
                 dataGridView1.Columns["quantidade_min"].HeaderText = "quantidade_min";
                 dataGridView1.Columns["quantidade"].HeaderText = "quantidade";
+                dataGridView1.Columns["id"].Visible = false;
 
             }
         }
@@ -50,7 +53,10 @@ namespace projeto_1
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
+                id = row.Cells["id"].Value is DBNull ? 0 : Convert.ToInt32(row.Cells["id"].Value);
+
                 // Preenche os campos de texto com os valores da linha
+                id = Convert.ToInt32(row.Cells["id"].Value); // pega o ID da linha
                 txtTipoPeca.Text = row.Cells["tipo_peca"].Value.ToString();
                 txtModelo.Text = row.Cells["modelo"].Value.ToString();
                 txtMarca.Text = row.Cells["marca"].Value.ToString();
@@ -79,7 +85,7 @@ namespace projeto_1
                 return;
             }
             Cadastropeca db = new Cadastropeca();
-            if (db.Adicionarpeca( tipo_peca, modelo, marca, estado, quantidade_min, quantidade))
+            if (db.Adicionarpeca(id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade))
             {
                 MessageBox.Show("peça cadastrado com sucesso!", "sucesso",
                  MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -90,43 +96,42 @@ namespace projeto_1
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (dgvPecas.SelectedRows.Count == 0)
+            if (id == 0)
             {
-                MessageBox.Show("Selecione uma peça para excluir.");
+                MessageBox.Show("Por favor, selecione um usuario no grid para excluir.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            DialogResult confirmacao = MessageBox.Show(
+               "Tem certeza que deseja excluir o cliente selecionado? Esta ação não pode ser desfeita.",
+               "Confirmar Exclusão",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Warning
+           );
 
-            int idPeca = Convert.ToInt32(dgvPecas.SelectedRows[0].Cells["id"].Value);
 
-            if (MessageBox.Show("Tem certeza que deseja excluir esta peça?", "Confirmação",
-                                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (confirmacao == DialogResult.Yes)
             {
-                try
-                {
-                    using (var conn = Database.GetConnection())
-                    {
-                        conn.Open();
-                        string sql = "DELETE FROM pecas WHERE id = @id";
-                        using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@id", idPeca);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
+                // INSTANCIA DO BANCO
+                CadastroUsuarios db = new CadastroUsuarios();
 
-                    MessageBox.Show("Peça excluída com sucesso!");
-                    CarregarPecas();
-                }
-                catch (Exception ex)
+
+                if (db.Excluirpeca(id))
+
                 {
-                    MessageBox.Show("Erro ao excluir peça: " + ex.Message);
+                    MessageBox.Show("Cliente excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimparCampos();       // Limpa os campos de texto
+                    CarregarDadosGrid();  // Recarrega o grid para remover a linha do cliente excluído
                 }
+
+
             }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            if (dgvPecas.SelectedRows.Count == 0)
+            if (id == 0)
+
             {
                 MessageBox.Show("Por favor, selecione um cliente no grid antes de atualizar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -142,7 +147,7 @@ namespace projeto_1
 
 
             Cadastropeca db = new Cadastropeca();
-            if (db.Adicionarpeca(tipo_peca, modelo, marca, estado, quantidade_min, quantidade))
+            if (db.Adicionarpeca(id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade))
             {
                 MessageBox.Show("Cliente atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparCampos();
@@ -183,5 +188,13 @@ namespace projeto_1
             Application.Run(new Menu());
         
     }
+
+        private void btnpesquisar_Click(object sender, EventArgs e)
+        {
+            string Criterio = txtpesquisar.Text;
+            CadastroUsuarios db = new CadastroUsuarios();
+            dataGridView1.DataSource = db.Pesquisarpeca(Criterio);
+            formatarGrid();
+        }
     }
 }

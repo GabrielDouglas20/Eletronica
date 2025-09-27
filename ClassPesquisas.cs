@@ -65,7 +65,7 @@ namespace projeto_1
             return dataTable;
         }
         // --- MÉTODO PARA PESQUISAR PEÇAS ---
-        public DataTable PesquisaPecas()
+        public DataTable Pesquisarpeca()
         {
             DataTable dataTable = new DataTable();
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
@@ -73,19 +73,7 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = @"
-                SELECT 
-                    p.id,
-                    p.tipo_peca,
-                    p.marca,
-                    p.estado,
-                    p.quantidade_min,
-                    p.modelo,
-                    IFNULL(SUM(e.quantidade), 0) AS quantidade_estoque
-                FROM pecas p
-                LEFT JOIN estoque e ON e.id_peca = p.id
-                GROUP BY p.id, p.tipo_peca, p.marca, p.estado, p.quantidade_min, p.modelo
-                ORDER BY p.tipo_peca ASC";
+                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade  From  pecas ORDER BY cpf ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.Fill(dataTable);
@@ -93,7 +81,7 @@ namespace projeto_1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro ao Listar peças:" + ex.Message, "Erro",
+                    MessageBox.Show("Erro ao Listar usuario:" + ex.Message, "Erro",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -108,22 +96,7 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-
-                    string comandoSql = @"
-                SELECT 
-                    p.id,
-                    p.tipo_peca,
-                    p.marca,
-                    p.estado,
-                    p.quantidade_min,
-                    p.modelo,
-                    IFNULL(SUM(e.quantidade), 0) AS quantidade_estoque
-                FROM pecas p
-                LEFT JOIN estoque e ON e.id_peca = p.id
-                WHERE p.tipo_peca LIKE @criterio OR p.modelo LIKE @criterio
-                GROUP BY p.id, p.tipo_peca, p.marca, p.estado, p.quantidade_min, p.modelo
-                ORDER BY p.tipo_peca ASC";
-
+                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade FROM pecas WHERE tipo_peca LIKE @criterio OR modelo LIKE @criterio ORDER BY tipo_peca ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.SelectCommand.Parameters.AddWithValue("@criterio", "%" + criterio + "%");
@@ -132,7 +105,7 @@ namespace projeto_1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro ao pesquisar peças: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro ao pesquisar peça: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             return dataTable;

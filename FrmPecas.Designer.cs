@@ -43,12 +43,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtquantidade = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnVoltar = new System.Windows.Forms.Button();
             this.Desligar = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtquantidade = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnpesquisar = new System.Windows.Forms.Button();
+            this.txtpesquisar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidademin)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -194,6 +196,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.txtpesquisar);
+            this.panel1.Controls.Add(this.btnpesquisar);
             this.panel1.Controls.Add(this.txtquantidade);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtTipoPeca);
@@ -214,6 +218,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1101, 118);
             this.panel1.TabIndex = 15;
+            // 
+            // txtquantidade
+            // 
+            this.txtquantidade.Location = new System.Drawing.Point(346, 78);
+            this.txtquantidade.Name = "txtquantidade";
+            this.txtquantidade.Size = new System.Drawing.Size(100, 20);
+            this.txtquantidade.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(343, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Quantidade";
             // 
             // panel2
             // 
@@ -255,30 +276,30 @@
             this.Desligar.UseVisualStyleBackColor = true;
             this.Desligar.Click += new System.EventHandler(this.Desligar_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(343, 61);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Quantidade";
-            // 
-            // txtquantidade
-            // 
-            this.txtquantidade.Location = new System.Drawing.Point(346, 78);
-            this.txtquantidade.Name = "txtquantidade";
-            this.txtquantidade.Size = new System.Drawing.Size(100, 20);
-            this.txtquantidade.TabIndex = 16;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(346, 279);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(655, 277);
             this.dataGridView1.TabIndex = 28;
+            // 
+            // btnpesquisar
+            // 
+            this.btnpesquisar.Location = new System.Drawing.Point(788, 22);
+            this.btnpesquisar.Name = "btnpesquisar";
+            this.btnpesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnpesquisar.TabIndex = 17;
+            this.btnpesquisar.Text = "pesquisar";
+            this.btnpesquisar.UseVisualStyleBackColor = true;
+            this.btnpesquisar.Click += new System.EventHandler(this.btnpesquisar_Click);
+            // 
+            // txtpesquisar
+            // 
+            this.txtpesquisar.Location = new System.Drawing.Point(648, 24);
+            this.txtpesquisar.Name = "txtpesquisar";
+            this.txtpesquisar.Size = new System.Drawing.Size(100, 20);
+            this.txtpesquisar.TabIndex = 18;
             // 
             // FrmPecas
             // 
@@ -324,5 +345,7 @@
         private System.Windows.Forms.TextBox txtquantidade;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtpesquisar;
+        private System.Windows.Forms.Button btnpesquisar;
     }
 }

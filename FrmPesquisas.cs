@@ -25,7 +25,7 @@ namespace projeto_1
         {
             MaskUsuarioP.Select();
             CarregarDadosdoGrid();
-            CarregarPecasGrid(); // Carrega grid de peças ao iniciar
+             // Carrega grid de peças ao iniciar
         }
 
         // ------------------- USUÁRIOS -------------------
@@ -103,29 +103,7 @@ namespace projeto_1
         private void MaskUsuarioP_MaskInputRejected(object sender, MaskInputRejectedEventArgs e) { }
 
         // ------------------- PEÇAS -------------------
-        private void CarregarPecasGrid()
-        {
-            ClassPesquisas db = new ClassPesquisas();
-            dataGridViewPecasP.DataSource = db.Pesquisarpeca();
-
-            // Adiciona a coluna "quantidade" se não existir
-            if (!dataGridViewPecasP.Columns.Contains("quantidade"))
-            {
-                DataGridViewTextBoxColumn colunaQuantidade = new DataGridViewTextBoxColumn();
-                colunaQuantidade.Name = "quantidade";
-                colunaQuantidade.HeaderText = "Quantidade";
-                colunaQuantidade.ValueType = typeof(int);
-                dataGridViewPecasP.Columns.Add(colunaQuantidade);
-
-                // Opcional: preenche a coluna com valores padrão (exemplo: 0)
-                foreach (DataGridViewRow row in dataGridViewPecasP.Rows)
-                {
-                    row.Cells["quantidade"].Value = 0;
-                }
-            }
-
-            FormatarGridPecas();
-        }
+        
 
         private void FormatarGridPecas()
         {

@@ -43,14 +43,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtpesquisar = new System.Windows.Forms.TextBox();
+            this.btnpesquisar = new System.Windows.Forms.Button();
             this.txtquantidade = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnVoltar = new System.Windows.Forms.Button();
             this.Desligar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnpesquisar = new System.Windows.Forms.Button();
-            this.txtpesquisar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidademin)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -219,6 +219,23 @@
             this.panel1.Size = new System.Drawing.Size(1101, 118);
             this.panel1.TabIndex = 15;
             // 
+            // txtpesquisar
+            // 
+            this.txtpesquisar.Location = new System.Drawing.Point(648, 24);
+            this.txtpesquisar.Name = "txtpesquisar";
+            this.txtpesquisar.Size = new System.Drawing.Size(100, 20);
+            this.txtpesquisar.TabIndex = 18;
+            // 
+            // btnpesquisar
+            // 
+            this.btnpesquisar.Location = new System.Drawing.Point(788, 22);
+            this.btnpesquisar.Name = "btnpesquisar";
+            this.btnpesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnpesquisar.TabIndex = 17;
+            this.btnpesquisar.Text = "pesquisar";
+            this.btnpesquisar.UseVisualStyleBackColor = true;
+            this.btnpesquisar.Click += new System.EventHandler(this.btnpesquisar_Click);
+            // 
             // txtquantidade
             // 
             this.txtquantidade.Location = new System.Drawing.Point(346, 78);
@@ -283,23 +300,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(655, 277);
             this.dataGridView1.TabIndex = 28;
-            // 
-            // btnpesquisar
-            // 
-            this.btnpesquisar.Location = new System.Drawing.Point(788, 22);
-            this.btnpesquisar.Name = "btnpesquisar";
-            this.btnpesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnpesquisar.TabIndex = 17;
-            this.btnpesquisar.Text = "pesquisar";
-            this.btnpesquisar.UseVisualStyleBackColor = true;
-            this.btnpesquisar.Click += new System.EventHandler(this.btnpesquisar_Click);
-            // 
-            // txtpesquisar
-            // 
-            this.txtpesquisar.Location = new System.Drawing.Point(648, 24);
-            this.txtpesquisar.Name = "txtpesquisar";
-            this.txtpesquisar.Size = new System.Drawing.Size(100, 20);
-            this.txtpesquisar.TabIndex = 18;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // FrmPecas
             // 

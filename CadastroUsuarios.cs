@@ -382,7 +382,7 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade  From  pecas ORDER BY cpf ASC";
+                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade  From  pecas ORDER BY id ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.Fill(dataTable);
@@ -395,6 +395,135 @@ namespace projeto_1
                 }
             }
             return dataTable;
+        }
+        public bool Adicionarmovi(int id, string cpf, string nome, string email, string telefone, string endereco, string cargo, string senha, string data_nascimento, string data_admissao)
+        {
+            using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
+            {
+                try
+                {
+                    conexao.Open();
+                    string comandoSql = "INSERT INTO cadastro (cpf, nome, email, telefone, endereco, cargo, senha, data_nascimento, data_admissao) VALUES (@cpf,@nome,@email,@telefone,@endereco,@cargo,@senha,@data_nascimento,@data_admissao )";
+                    using (MySqlCommand comand = new MySqlCommand(comandoSql, conexao))
+                    {
+                        comand.Parameters.AddWithValue("@cpf", cpf);
+                        comand.Parameters.AddWithValue("@nome", nome);
+                        comand.Parameters.AddWithValue("@email", email);
+                        comand.Parameters.AddWithValue("@telefone", telefone);
+                        comand.Parameters.AddWithValue("@endereco", endereco);
+                        comand.Parameters.AddWithValue("@cargo", cargo);
+                        comand.Parameters.AddWithValue("@senha", senha);
+                        comand.Parameters.AddWithValue("@data_nascimento", data_nascimento);
+                        comand.Parameters.AddWithValue("@data_admissao", data_admissao);
+
+                        int linhasAfetadas = comand.ExecuteNonQuery();
+                        return linhasAfetadas > 0;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    if (ex.Number == 1062)
+                    {
+                        MessageBox.Show("Erro ao cadastrar: o CPF informado já existe.", "Erro de Duplicidade", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro de banco de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+        public bool RegistrarMovimentacao(int depositoId, int pecaId, string tipoMov, int quantidade, string motivo, string referencia, out string mensagem)
+        {
+            mensagem = "";
+            try
+            {
+                using (var conn = Data.Database.GetConnection())
+                {
+                    conn.Open();
+                    using (var transaction = conn.BeginTransaction())
+                    {
+                        // Pega estoque atual
+                        int estoqueAtual = 0;
+                        using (var cmdCheck = new MySqlCommand(
+                            "SELECT quantidade FROM estoque WHERE id_deposito=@dep AND id_peca=@peca FOR UPDATE", conn, transaction))
+                        {
+                            cmdCheck.Parameters.AddWithValue("@dep", depositoId);
+                            cmdCheck.Parameters.AddWithValue("@peca", pecaId);
+
+                            using (var reader = cmdCheck.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    estoqueAtual = Convert.ToInt32(reader["quantidade"]);
+                                }
+                                else
+                                {
+                                    // Se não existe registro no estoque, cria
+                                    reader.Close();
+                                    using (var cmdInsert = new MySqlCommand(
+                                        "INSERT INTO estoque (id_deposito, id_peca, quantidade) VALUES (@dep, @peca, 0)", conn, transaction))
+                                    {
+                                        cmdInsert.Parameters.AddWithValue("@dep", depositoId);
+                                        cmdInsert.Parameters.AddWithValue("@peca", pecaId);
+                                        cmdInsert.ExecuteNonQuery();
+                                        estoqueAtual = 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Verifica se há estoque suficiente para saída
+                        if (tipoMov == "SAIDA" && estoqueAtual < quantidade)
+                        {
+                            mensagem = "⚠ Estoque insuficiente para esta saída!";
+                            return false;
+                        }
+
+                        // Registra movimentação
+                        using (var cmdMov = new MySqlCommand(
+                            @"INSERT INTO movimentacoes_pecas 
+                            (id_deposito, id_peca, tipo_movimentacao, quantidade, motivo) 
+                            VALUES (@dep, @peca, @tipo, @qtd, @motivo)", conn, transaction))
+                        {
+                            cmdMov.Parameters.AddWithValue("@dep", depositoId);
+                            cmdMov.Parameters.AddWithValue("@peca", pecaId);
+                            cmdMov.Parameters.AddWithValue("@tipo", tipoMov);
+                            cmdMov.Parameters.AddWithValue("@qtd", quantidade);
+                            cmdMov.Parameters.AddWithValue("@motivo", motivo);
+                            cmdMov.ExecuteNonQuery();
+                        }
+
+                        // Atualiza estoque
+                        int novoEstoque = tipoMov == "ENTRADA" ? estoqueAtual + quantidade : estoqueAtual - quantidade;
+                        using (var cmdUpdate = new MySqlCommand(
+                            "UPDATE estoque SET quantidade=@qtd WHERE id_deposito=@dep AND id_peca=@peca", conn, transaction))
+                        {
+                            cmdUpdate.Parameters.AddWithValue("@qtd", novoEstoque);
+                            cmdUpdate.Parameters.AddWithValue("@dep", depositoId);
+                            cmdUpdate.Parameters.AddWithValue("@peca", pecaId);
+                            cmdUpdate.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        mensagem = tipoMov == "ENTRADA"
+                            ? $"Entrada de {quantidade} unidade(s) registrada com sucesso!"
+                            : $"Saída de {quantidade} unidade(s) registrada com sucesso!";
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem = "Erro ao registrar movimentação: " + ex.Message;
+                return false;
+            }
         }
     }
         }

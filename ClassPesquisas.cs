@@ -73,7 +73,7 @@ namespace projeto_1
                 try
                 {
                     conexao.Open();
-                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade  From  pecas ORDER BY cpf ASC";
+                    string comandoSql = "SELECT id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade  From  pecas ORDER BY tipo_peca ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoSql, conexao))
                     {
                         adapter.Fill(dataTable);

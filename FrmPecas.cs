@@ -24,12 +24,25 @@ namespace projeto_1
             InitializeComponent();
            
         }
+        private void FrmMovimentacao_Load(object sender, EventArgs e)
+        {
+            CadastroUsuarios db = new CadastroUsuarios();
+            DataTable dt = db.Pesquisarpeca();
+            dataGridView1.DataSource = dt;
+
+            // preenche o combo direto por DataSource
+            cmbEstado.DataSource = new string[] { "NOVO", "USADO", "DEFEITO" };
+
+            CarregarDadosGrid();
+        }
         private void CarregarDadosGrid()
         {
             CadastroUsuarios db = new CadastroUsuarios();
             dataGridView1.DataSource = db.Pesquisarpeca();
             formatarGrid();
         }
+
+       
 
         private void formatarGrid()
         {

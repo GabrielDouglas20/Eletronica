@@ -97,7 +97,7 @@
             // 
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(752, 79);
+            this.btnSalvar.Location = new System.Drawing.Point(998, 47);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 6;
@@ -109,7 +109,7 @@
             // 
             this.btnAtualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAtualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtualizar.Location = new System.Drawing.Point(833, 79);
+            this.btnAtualizar.Location = new System.Drawing.Point(905, 76);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(87, 23);
             this.btnAtualizar.TabIndex = 7;
@@ -121,7 +121,7 @@
             // 
             this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Location = new System.Drawing.Point(926, 79);
+            this.btnExcluir.Location = new System.Drawing.Point(998, 76);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
             this.btnExcluir.TabIndex = 8;
@@ -132,8 +132,10 @@
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.FlatAppearance.BorderSize = 0;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Location = new System.Drawing.Point(1007, 79);
+            this.btnSair.Location = new System.Drawing.Point(1013, 0);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
             this.btnSair.TabIndex = 9;
@@ -221,18 +223,21 @@
             // 
             // txtpesquisar
             // 
-            this.txtpesquisar.Location = new System.Drawing.Point(648, 24);
+            this.txtpesquisar.Location = new System.Drawing.Point(486, 78);
             this.txtpesquisar.Name = "txtpesquisar";
-            this.txtpesquisar.Size = new System.Drawing.Size(100, 20);
+            this.txtpesquisar.Size = new System.Drawing.Size(116, 20);
             this.txtpesquisar.TabIndex = 18;
             // 
             // btnpesquisar
             // 
-            this.btnpesquisar.Location = new System.Drawing.Point(788, 22);
+            this.btnpesquisar.FlatAppearance.BorderSize = 0;
+            this.btnpesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnpesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnpesquisar.Location = new System.Drawing.Point(476, 56);
             this.btnpesquisar.Name = "btnpesquisar";
             this.btnpesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnpesquisar.TabIndex = 17;
-            this.btnpesquisar.Text = "pesquisar";
+            this.btnpesquisar.Text = "Pesquisar";
             this.btnpesquisar.UseVisualStyleBackColor = true;
             this.btnpesquisar.Click += new System.EventHandler(this.btnpesquisar_Click);
             // 
@@ -240,7 +245,7 @@
             // 
             this.txtquantidade.Location = new System.Drawing.Point(346, 78);
             this.txtquantidade.Name = "txtquantidade";
-            this.txtquantidade.Size = new System.Drawing.Size(100, 20);
+            this.txtquantidade.Size = new System.Drawing.Size(115, 20);
             this.txtquantidade.TabIndex = 16;
             // 
             // label6
@@ -295,10 +300,14 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(346, 279);
+            this.dataGridView1.Location = new System.Drawing.Point(123, 118);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(655, 277);
+            this.dataGridView1.Size = new System.Drawing.Size(965, 570);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 

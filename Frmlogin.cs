@@ -45,6 +45,7 @@ namespace projeto_1
             else
             {
                 MessageBox.Show("cpf e senha incorretos. tente novamente!", " Falha no login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 

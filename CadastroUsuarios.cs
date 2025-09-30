@@ -213,7 +213,7 @@ namespace projeto_1
                 }
             }
         }
-
+        //Cadastros das peças
         public class Cadastropeca
         {
             private readonly string stringDeConexao = "Server=localhost;Database=eletronica;User=root;Password=123456;";
@@ -251,7 +251,7 @@ namespace projeto_1
                 }
             }
         }
-
+        //Aba de notificação
         public class RelatorioEstoque
         {
             private string connString = "Server=localhost;Database=eletronica;User=root;Password=123456;";
@@ -286,6 +286,7 @@ namespace projeto_1
                 return lista;
             }
         }
+        //Atualizar peças
         public bool Atualizarpeca(int id, string tipo_peca, string modelo, string marca, string estado, string quantidade_min, string quantidade)
         {
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
@@ -322,6 +323,7 @@ namespace projeto_1
                 }
             }
         }
+        //Exclussão de peças
                  public bool Excluirpeca(int id)
         {
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
@@ -353,6 +355,7 @@ namespace projeto_1
             }
 
         }
+        //Pesquisa de peças com criterio(tipo e modelo)
         public DataTable Pesquisarpeca(string criterio)
         {
             DataTable dataTable = new DataTable();
@@ -375,6 +378,7 @@ namespace projeto_1
             }
             return dataTable;
         }
+        //Pesquisa normal/sem criterio
         public DataTable Pesquisarpeca()
         {
             DataTable dataTable = new DataTable();
@@ -397,6 +401,7 @@ namespace projeto_1
             }
             return dataTable;
         }
+        //Movimentação(NÃO FINALIZADA)
         public bool Adicionarmovi(int id, string cpf, string nome, string email, string telefone, string endereco, string cargo, string senha, string data_nascimento, string data_admissao)
         {
             using (MySqlConnection conexao = new MySqlConnection(stringDeConexao))
@@ -440,6 +445,7 @@ namespace projeto_1
                 }
             }
         }
+        //NÃO FINALIZADA
         public bool RegistrarMovimentacao(int depositoId, int pecaId, string tipoMov, int quantidade, string motivo, string referencia, out string mensagem)
         {
             mensagem = "";

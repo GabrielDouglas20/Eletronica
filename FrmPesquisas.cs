@@ -103,7 +103,7 @@ namespace projeto_1
         private void MaskUsuarioP_MaskInputRejected(object sender, MaskInputRejectedEventArgs e) { }
 
         // ------------------- PEÇAS -------------------
-        
+        //Gabriel fez alterações
 
         private void FormatarGridPecas()
         {

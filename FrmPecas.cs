@@ -93,14 +93,14 @@ namespace projeto_1
 
             if (string.IsNullOrWhiteSpace(tipo_peca))
             {
-                MessageBox.Show("O campo nome é obrigatorio", "atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("O campo peça é obrigatorio", "atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTipoPeca.Focus();
                 return;
             }
             Cadastropeca db = new Cadastropeca();
             if (db.Adicionarpeca(id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade))
             {
-                MessageBox.Show("peça cadastrado com sucesso!", "sucesso",
+                MessageBox.Show("peça cadastrada com sucesso!", "sucesso",
                  MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparCampos();
 
@@ -115,7 +115,7 @@ namespace projeto_1
                 return;
             }
             DialogResult confirmacao = MessageBox.Show(
-               "Tem certeza que deseja excluir o cliente selecionado? Esta ação não pode ser desfeita.",
+               "Tem certeza que deseja excluir esta peça do estoque? Esta ação não pode ser desfeita.",
                "Confirmar Exclusão",
                MessageBoxButtons.YesNo,
                MessageBoxIcon.Warning
@@ -131,7 +131,7 @@ namespace projeto_1
                 if (db.Excluirpeca(id))
 
                 {
-                    MessageBox.Show("Cliente excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Peça excluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     LimparCampos();       // Limpa os campos de texto
                     CarregarDadosGrid();  // Recarrega o grid para remover a linha do cliente excluído
@@ -146,7 +146,7 @@ namespace projeto_1
             if (id == 0)
 
             {
-                MessageBox.Show("Por favor, selecione um cliente no grid antes de atualizar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, selecione uma peça no grid antes de atualizar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -162,7 +162,7 @@ namespace projeto_1
             Cadastropeca db = new Cadastropeca();
             if (db.Adicionarpeca(id, tipo_peca, modelo, marca, estado, quantidade_min, quantidade))
             {
-                MessageBox.Show("Cliente atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Peça atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparCampos();
                 
             }

@@ -75,15 +75,17 @@ namespace projeto_1
 
         }
 
-
+        //notificação(gabriel)
         private void btnNotificacoes_Click(object sender, EventArgs e)
         {
             RelatorioEstoque rel = new RelatorioEstoque();
-            var lista = rel.Gerar();
+            var lista = rel.Gerar();//--chamando o metodo
+
+            //cabeçalho do grid
 
             rtbRelatorio.Clear();
-            rtbRelatorio.AppendText($"{"ID",-5} {"Peça",-20} {"Qtd",-12} {"Mínimo",-10} Status\n");
-            rtbRelatorio.AppendText("---------------------------------------------------------------\n");
+            rtbRelatorio.AppendText($"{"ID",-5} {"Peça",-20} {"Modelo",-20} {"Qtd",-12} {"Mínimo",-10} Status\n");
+            rtbRelatorio.AppendText("--------------------------------------------------------------------------------------\n");
 
             bool temBaixa = false;
 
@@ -93,7 +95,7 @@ namespace projeto_1
                 if (item.quantidade < item.minimo) temBaixa = true;
 
                 rtbRelatorio.AppendText(
-                    $"{item.id,-5} {item.tipo,-20} {item.quantidade,-12} {item.minimo,-10} {status}\n"
+                    $"{item.id,-5} {item.tipo,-20} {item.modelo,-20} {item.quantidade,-12} {item.minimo,-10} {status}\n"
                 );
             }
 

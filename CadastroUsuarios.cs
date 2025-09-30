@@ -256,14 +256,14 @@ namespace projeto_1
         {
             private string connString = "Server=localhost;Database=eletronica;User=root;Password=123456;";
 
-            public List<(int id, string tipo, int quantidade, int minimo)> Gerar()
+            public List<(int id, string tipo, string modelo, int quantidade, int minimo)> Gerar()
             {
-                List<(int, string, int, int)> lista = new List<(int, string, int, int)>();
+                List<(int, string, string, int, int)> lista = new List<(int, string, string, int, int)>();
 
                 using (var conn = new MySqlConnection(connString))
                 {
                     conn.Open();
-                    string sql = "SELECT id, tipo_peca, quantidade, quantidade_min FROM pecas";
+                    string sql = "SELECT id, tipo_peca, modelo, quantidade, quantidade_min FROM pecas";
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader reader = cmd.ExecuteReader();
@@ -272,13 +272,14 @@ namespace projeto_1
                     {
                         int id = Convert.ToInt32(reader["id"]);
                         string tipo = reader["tipo_peca"].ToString();
+                        string modelo = reader["modelo"].ToString();
 
                         int quantidade = 0;
                         int.TryParse(reader["quantidade"].ToString(), out quantidade);
 
                         int minimo = Convert.ToInt32(reader["quantidade_min"]);
 
-                        lista.Add((id, tipo, quantidade, minimo));
+                        lista.Add((id, tipo, modelo, quantidade, minimo));
                     }
                 }
 

@@ -213,7 +213,7 @@
             this.rtbRelatorio.Name = "rtbRelatorio";
             this.rtbRelatorio.ReadOnly = true;
             this.rtbRelatorio.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbRelatorio.Size = new System.Drawing.Size(292, 238);
+            this.rtbRelatorio.Size = new System.Drawing.Size(344, 240);
             this.rtbRelatorio.TabIndex = 4;
             this.rtbRelatorio.Text = "";
             // 
